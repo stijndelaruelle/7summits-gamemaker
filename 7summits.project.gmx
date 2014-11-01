@@ -7,7 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_solid</sprite>
-    <sprite>sprites\spr_solid_bullet</sprite>
+    <sprite>sprites\spr_solid_projectile</sprite>
     <sprite>sprites\spr_coin</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_platform_moving</sprite>
@@ -20,18 +20,23 @@
     <sprite>sprites\spr_construction</sprite>
     <sprite>sprites\spr_rope</sprite>
     <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_testslope</sprite>
+    <sprite>sprites\spr_barrel</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_player</object>
     <objects name="walls">
-      <object>objects\par_solid</object>
-      <object>objects\par_solid_bullet</object>
+      <objects name="parents">
+        <object>objects\par_solid</object>
+        <object>objects\par_solid_projectile</object>
+      </objects>
       <object>objects\obj_wall</object>
-      <object>objects\obj_wall_bullet</object>
-      <object>objects\obj_platform_moving</object>
+      <object>objects\obj_wall_projectile</object>
       <object>objects\obj_platform</object>
+      <object>objects\obj_platform_moving</object>
+      <object>objects\obj_slope</object>
     </objects>
     <objects name="ladders">
       <object>objects\par_ladder</object>
@@ -43,12 +48,13 @@
     </objects>
     <object>objects\obj_bullet</object>
     <object>objects\obj_singleton</object>
+    <object>objects\obj_barrel</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_demo</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41944.0457391435</constant>
+    <constant name="GM_build_date">41944.4744905671</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

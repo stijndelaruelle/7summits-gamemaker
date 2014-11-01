@@ -3,7 +3,7 @@
   <spriteName>spr_player_idle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_player_mask</maskName>
@@ -43,7 +43,7 @@ m_WasOnGround = false; //Were we on the ground last frame? Used for decending sl
 m_ReloadTime = 0;
 m_MaxReloadTime = 1;
 
-//Keys
+//Keys (that can be accessed)
 m_KeyDown = 0;
 </string>
           </argument>
@@ -69,11 +69,12 @@ m_KeyDown = 0;
             <kind>1</kind>
             <string>///Handle input
 
-var leftKey = keyboard_check(vk_left);
-var rightKey = keyboard_check(vk_right);
+var leftKey = keyboard_check(vk_left) || keyboard_check(ord("A")) || keyboard_check(ord("Q"));
+var rightKey = keyboard_check(vk_right) || keyboard_check(ord("D"));
+var keyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(ord("Z"));
+m_KeyDown = keyboard_check(vk_down) || keyboard_check(ord("S"));
+
 var jumpKey = keyboard_check_pressed(vk_space);
-var keyUp = keyboard_check(vk_up);
-m_KeyDown = keyboard_check(vk_down);
 
 var shootKey = (mouse_button == mb_left);
 
@@ -199,6 +200,10 @@ else if (shootKey)
     bullet.m_DirectionY = sin(angle * (pi / 180));
     bullet.image_angle = angle;
     
+    //offet the bullet so he doesn't spawn in us.
+    bullet.x += bullet.m_DirectionX * 32;
+    bullet.y -= bullet.m_DirectionY * 32;
+    
     m_ReloadTime = m_MaxReloadTime;
 }
 </string>
@@ -281,8 +286,6 @@ if (place_meeting(x, y + (m_VertSpeed * global.GameDeltaTime), par_solid) &amp;&
     m_VertSpeed = 0;
     isOnGround = true;
 }
-
-
 
 m_WasOnGround = isOnGround;
 
