@@ -26,8 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize variables
-
-m_Gravity = 1;
 m_Speed = 14;
 m_JumpSpeed = 20;
 m_HorizSpeed = 0;
@@ -37,6 +35,13 @@ m_VertCarrySpeed = 0;
 
 m_MaxAirJumps = 1;
 m_AirJumps = m_MaxAirJumps;
+
+m_IsOnLadder = false;
+m_WasOnGround = false; //Were we on the ground last frame? Used for decending slopes
+
+//Shooting
+m_ReloadTime = 0;
+m_MaxReloadTime = 1;
 
 //Keys
 m_KeyDown = 0;
@@ -66,13 +71,14 @@ m_KeyDown = 0;
 
 var leftKey = keyboard_check(vk_left);
 var rightKey = keyboard_check(vk_right);
-var jumpKey = keyboard_check_pressed(vk_up);
+var jumpKey = keyboard_check_pressed(vk_space);
+var keyUp = keyboard_check(vk_up);
 m_KeyDown = keyboard_check(vk_down);
 
-var deltaTime = 30 * (delta_time / 1000000); //delta_time is in microseconds
+var shootKey = (mouse_button == mb_left);
 
 //Check for ground
-if (place_meeting(x, y+1, obj_solid))
+if (place_meeting(x, y+1, par_solid) || m_IsOnLadder)
 {
     m_VertSpeed = 0;
     m_AirJumps = m_MaxAirJumps;
@@ -81,16 +87,14 @@ if (place_meeting(x, y+1, obj_solid))
     if (jumpKey)
     {
         m_VertSpeed = -m_JumpSpeed;
+        m_IsOnLadder = false;
     }
 }
 
 //We're in the air
 else
 {
-    if (m_VertSpeed &lt; 10)
-    {
-        m_VertSpeed += m_Gravity;
-    }
+    m_VertSpeed += global.Gravity;
     
     if (m_AirJumps &gt; 0)
     {
@@ -132,6 +136,27 @@ if (rightKey)
 //    }
 //}
 
+//Ladder
+if (!m_IsOnLadder)
+{
+    if (keyUp || m_KeyDown)
+    {
+        if (place_meeting(x,y,par_ladder))
+        {
+            m_IsOnLadder = true;
+        }
+    }
+}
+
+if (m_IsOnLadder)
+{
+    m_VertSpeed = 0;
+    
+    if (keyUp) m_VertSpeed = -m_Speed/2;
+    if (m_KeyDown) m_VertSpeed = m_Speed/2;
+    if (!place_meeting(x,y,par_ladder)) m_IsOnLadder = false;    
+}
+
 //Not moving
 if ((leftKey &amp;&amp; rightKey) || (!leftKey &amp;&amp; !rightKey))
 {
@@ -160,21 +185,60 @@ m_HorizCarrySpeed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Thowing a rope
+if (m_ReloadTime &gt; 0)
+{
+    m_ReloadTime -= global.DeltaTime;
+}
+else if (shootKey)
+{
+    var angle = point_direction(x, y, mouse_x, mouse_y);
+    
+    var bullet = instance_create(x, y, obj_bullet);
+    bullet.m_DirectionX = cos(angle * (pi / 180));
+    bullet.m_DirectionY = sin(angle * (pi / 180));
+    bullet.image_angle = angle;
+    
+    m_ReloadTime = m_MaxReloadTime;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Handle collisions &amp; movement
+var maxSlope = 10;
 
 //Horizontal collision
-if (place_meeting(x + (finalHorizSpeed * deltaTime), y, obj_solid))
+if (place_meeting(x + (finalHorizSpeed * global.GameDeltaTime), y, par_solid))
 {
     var yOffset = 0;
     
-    while(place_meeting(x + (finalHorizSpeed), y - yOffset, obj_solid) &amp;&amp; yOffset &lt;= 15)
+    //Check how steep the slope is
+    while(place_meeting(x + (finalHorizSpeed * global.GameDeltaTime), y - yOffset, par_solid) &amp;&amp; yOffset &lt;= maxSlope)
     {
         ++yOffset;
     }
     
-    if (yOffset &gt; 15)
+    //To steep we can't climp it
+    if (yOffset &gt; maxSlope)
     {
-        while (!place_meeting(x + sign(finalHorizSpeed), y, obj_solid))
+        while (!place_meeting(x + sign(finalHorizSpeed), y, par_solid))
         {
             x += sign(finalHorizSpeed);
         }
@@ -187,21 +251,43 @@ if (place_meeting(x + (finalHorizSpeed * deltaTime), y, obj_solid))
 }
 
 //Move horizontally
-x += finalHorizSpeed * deltaTime;
+x += finalHorizSpeed * global.GameDeltaTime;
 
 //Vertical collision
+var isOnGround = false;
 
-if (place_meeting(x, y + (m_VertSpeed), obj_solid))
+//Check if we can run off a slope
+if (m_WasOnGround &amp;&amp; m_VertSpeed == 0)
 {
-    while (!place_meeting(x, y + sign(m_VertSpeed), obj_solid))
+    if (place_meeting(x, y + maxSlope, par_solid))
+    {
+        var yOffset = 0;
+        while (!place_meeting(x, y + 1, par_solid) &amp;&amp; yOffset &lt;= maxSlope)
+        {
+            y += 1;
+            ++yOffset;
+        }
+        m_VertSpeed = 0;
+        isOnGround = true;
+    }
+}
+
+if (place_meeting(x, y + (m_VertSpeed * global.GameDeltaTime), par_solid) &amp;&amp; !isOnGround)
+{
+    while (!place_meeting(x, y + sign(m_VertSpeed), par_solid))
     {
         y += sign(m_VertSpeed);
     }
     m_VertSpeed = 0;
+    isOnGround = true;
 }
 
+
+
+m_WasOnGround = isOnGround;
+
 //Move vertically
-y += m_VertSpeed * deltaTime;
+y += m_VertSpeed * global.GameDeltaTime;
 </string>
           </argument>
         </arguments>
@@ -223,35 +309,38 @@ y += m_VertSpeed * deltaTime;
           <argument>
             <kind>1</kind>
             <string>///Handle animations
-if (yprevious != y)
+if (m_VertSpeed != 0)
 {
-    sprite_index = spr_player_jump;
-    image_speed = 0;   
-    
-    if (y &gt;= yprevious)
+    if (!place_meeting(x, y+1, par_solid))
     {
-        image_index = 1;
-    }
-    else
-    {
-        image_index = 0;
+        sprite_index = spr_player_jump;
+        image_speed = 0;   
+        
+        if (y &gt;= yprevious)
+        {
+            image_index = 1;
+        }
+        else
+        {
+            image_index = 0;
+        }
     }
 }
 else
 {
-    if (m_HorizSpeed != 0)
+    if (m_HorizSpeed == 0)
+    {
+        sprite_index = spr_player_idle;
+        image_speed = 0;   
+    }
+    else
     {
         sprite_index = spr_player_walk;
         image_speed = 0.3;
     }
-    else
-    {
-        sprite_index = spr_player_idle;
-        image_speed = 0;
-    }
 }
 
-//We're moving to the left
+//Flip the sprite acoording to our direction
 if (m_HorizSpeed &lt; 0)
 {
     image_xscale = -1;
@@ -264,6 +353,22 @@ if (m_HorizSpeed &gt; 0)
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>331</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_restart_game</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
   </events>

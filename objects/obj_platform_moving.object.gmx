@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_solid</parentName>
+  <parentName>obj_wall</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -82,9 +82,9 @@ mask_index = spr_platform_moving;
 var deltaTime = 30 * (delta_time / 1000000); //delta_time is in microseconds
 m_HorizSpeed = (m_Dir * m_Speed);
 
-if (place_meeting(x + (m_HorizSpeed * deltaTime), y, obj_solid))
+if (place_meeting(x + (m_HorizSpeed * deltaTime), y, par_solid))
 {
-    while (!place_meeting(x + sign(m_HorizSpeed), y, obj_solid))
+    while (!place_meeting(x + sign(m_HorizSpeed), y, par_solid))
     {
         x += sign(m_HorizSpeed);
     }
@@ -158,7 +158,7 @@ if (instance_exists(obj_player))
           <argument>
             <kind>1</kind>
             <string>///Draw our sprite
-draw_sprite(spr_platform_moving,0,x,y);
+draw_sprite_ext(spr_platform_moving,0, x, y,image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

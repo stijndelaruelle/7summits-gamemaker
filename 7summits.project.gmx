@@ -6,8 +6,8 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_slope</sprite>
     <sprite>sprites\spr_solid</sprite>
+    <sprite>sprites\spr_solid_bullet</sprite>
     <sprite>sprites\spr_coin</sprite>
     <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_platform_moving</sprite>
@@ -17,21 +17,38 @@
       <sprite>sprites\spr_player_jump</sprite>
       <sprite>sprites\spr_player_mask</sprite>
     </sprites>
+    <sprite>sprites\spr_construction</sprite>
+    <sprite>sprites\spr_rope</sprite>
+    <sprite>sprites\spr_bullet</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_solid</object>
     <object>objects\obj_player</object>
-    <object>objects\obj_coin</object>
-    <object>objects\obj_platform</object>
-    <object>objects\obj_platform_moving</object>
+    <objects name="walls">
+      <object>objects\par_solid</object>
+      <object>objects\par_solid_bullet</object>
+      <object>objects\obj_wall</object>
+      <object>objects\obj_wall_bullet</object>
+      <object>objects\obj_platform_moving</object>
+      <object>objects\obj_platform</object>
+    </objects>
+    <objects name="ladders">
+      <object>objects\par_ladder</object>
+      <object>objects\obj_rope</object>
+      <object>objects\obj_ladder</object>
+    </objects>
+    <objects name="pickups">
+      <object>objects\obj_coin</object>
+    </objects>
+    <object>objects\obj_bullet</object>
+    <object>objects\obj_singleton</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_demo</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41942,9611057292</constant>
+    <constant name="GM_build_date">41944.0457391435</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
