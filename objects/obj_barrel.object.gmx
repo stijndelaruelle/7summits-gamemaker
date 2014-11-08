@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_barrel</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,12 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Remove the sprite by default
+sprite_index = -1
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Initialize variables
-m_Speed = 10;
+m_Speed = 5;
 m_HorizSpeed = m_Speed;
 m_VertSpeed = 0;
+m_RotationSpeed = 5;
 
 m_WasOnGround = false; //Used to roll of slopes
+m_HasBounced = false;
+
+m_DrawAngle = image_angle;
 </string>
           </argument>
         </arguments>
@@ -113,12 +139,53 @@ if ((place_meeting(x, y + (m_VertSpeed * global.GameDeltaTime), par_solid) ||
     }
     m_VertSpeed = 0;
     isOnGround = true;
+    
+    //We touched the ground, bounce up a bit (to fake physics)
+    if (!m_WasOnGround)
+    {
+        if (!m_HasBounced)
+        {
+            m_VertSpeed = -5;
+            m_HasBounced = true;
+        }
+        else
+        {
+            m_HasBounced = false;
+        }
+    }
 }
 
 m_WasOnGround = isOnGround;
 
 //Move vertically
 y += m_VertSpeed * global.GameDeltaTime;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw our sprite
+
+//Rotate
+m_DrawAngle += -sign(m_HorizSpeed) * m_RotationSpeed;
+draw_sprite_ext(spr_barrel,0, x, y,image_xscale, image_yscale, m_DrawAngle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

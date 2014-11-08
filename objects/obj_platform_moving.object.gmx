@@ -25,11 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize Variables
-
-m_Dir = -1;
-m_Speed = 3;
-m_HorizSpeed = 0;
+            <string>///Remove the sprite by default
+depth=1
+sprite_index = -1
 </string>
           </argument>
         </arguments>
@@ -50,9 +48,11 @@ m_HorizSpeed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Remove the sprite by default
-depth=1
-sprite_index = -1
+            <string>///Initialize Variables
+
+m_Dir = -1;
+m_Speed = 3;
+m_HorizSpeed = 0;
 </string>
           </argument>
         </arguments>

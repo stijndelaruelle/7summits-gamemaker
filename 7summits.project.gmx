@@ -6,22 +6,32 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_solid</sprite>
-    <sprite>sprites\spr_solid_projectile</sprite>
-    <sprite>sprites\spr_coin</sprite>
-    <sprite>sprites\spr_platform</sprite>
-    <sprite>sprites\spr_platform_moving</sprite>
-    <sprites name="Player">
+    <sprites name="player">
       <sprite>sprites\spr_player_idle</sprite>
       <sprite>sprites\spr_player_walk</sprite>
       <sprite>sprites\spr_player_jump</sprite>
       <sprite>sprites\spr_player_mask</sprite>
     </sprites>
-    <sprite>sprites\spr_construction</sprite>
-    <sprite>sprites\spr_rope</sprite>
+    <sprites name="walls">
+      <sprite>sprites\spr_solid</sprite>
+      <sprite>sprites\spr_solid_projectile</sprite>
+      <sprite>sprites\spr_platform</sprite>
+      <sprite>sprites\spr_platform_moving</sprite>
+    </sprites>
+    <sprites name="pickups">
+      <sprite>sprites\spr_coin</sprite>
+    </sprites>
+    <sprites name="ladders">
+      <sprite>sprites\spr_rope</sprite>
+      <sprite>sprites\spr_construction</sprite>
+    </sprites>
+    <sprites name="triggers">
+      <sprite>sprites\spr_spawner</sprite>
+      <sprite>sprites\spr_destroyer</sprite>
+    </sprites>
     <sprite>sprites\spr_bullet</sprite>
-    <sprite>sprites\spr_testslope</sprite>
     <sprite>sprites\spr_barrel</sprite>
+    <sprite>sprites\spr_testslope</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -46,9 +56,13 @@
     <objects name="pickups">
       <object>objects\obj_coin</object>
     </objects>
+    <objects name="triggers">
+      <object>objects\obj_spawner</object>
+      <object>objects\obj_destroyer</object>
+    </objects>
     <object>objects\obj_bullet</object>
-    <object>objects\obj_singleton</object>
     <object>objects\obj_barrel</object>
+    <object>objects\obj_singleton</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_demo</room>

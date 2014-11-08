@@ -45,6 +45,11 @@ m_MaxReloadTime = 1;
 
 //Keys (that can be accessed)
 m_KeyDown = 0;
+
+//Spawnlocation
+m_SpawnX = x;
+m_SpawnY = y;
+
 </string>
           </argument>
         </arguments>
@@ -353,6 +358,31 @@ if (m_HorizSpeed &gt; 0)
 {
     image_xscale = 1;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_barrel">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///On Barrel Hit
+x = m_SpawnX;
+y = m_SpawnY;
 </string>
           </argument>
         </arguments>
