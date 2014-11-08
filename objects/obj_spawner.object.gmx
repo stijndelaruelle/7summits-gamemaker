@@ -28,6 +28,8 @@
             <string>///Initialize variables
 m_Object = noone;
 m_SpawnRate = 1.0;
+m_Instant = false;
+m_HorizSpeed = 0;
 
 //Internal ones (don't change in creation code!)
 m_Timer = 0.0;
@@ -56,12 +58,19 @@ m_Timer = 0.0;
             <string>///Spawn objects
 if (m_Object == noone) exit;
 
+if (m_Instant)
+{
+    m_Timer = m_SpawnRate;
+    m_Instant = false;
+}
+
 m_Timer += global.DeltaTime;
 
 if (m_Timer &gt;= m_SpawnRate)
 {
     //Spawn the object
-    var bullet = instance_create(x, y, m_Object);
+    var obj = instance_create(x, y, m_Object);
+    obj.m_HorizSpeed = m_HorizSpeed;
     m_Timer = 0;
 }
 </string>

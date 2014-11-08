@@ -49,7 +49,7 @@ sprite_index = -1
             <kind>1</kind>
             <string>///Initialize variables
 m_Speed = 5;
-m_HorizSpeed = m_Speed;
+m_HorizSpeed = 0;
 m_VertSpeed = 0;
 m_RotationSpeed = 5;
 
@@ -145,7 +145,8 @@ if ((place_meeting(x, y + (m_VertSpeed * global.GameDeltaTime), par_solid) ||
     {
         if (!m_HasBounced)
         {
-            m_VertSpeed = -5;
+            m_VertSpeed = -5;    
+            if (m_HorizSpeed == 0) { m_HorizSpeed = m_Speed; }
             m_HasBounced = true;
         }
         else
