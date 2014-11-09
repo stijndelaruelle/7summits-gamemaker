@@ -17,6 +17,7 @@
       <sprite>sprites\spr_solid_projectile</sprite>
       <sprite>sprites\spr_platform</sprite>
       <sprite>sprites\spr_platform_moving</sprite>
+      <sprite>sprites\spr_platform_falling</sprite>
     </sprites>
     <sprites name="pickups">
       <sprite>sprites\spr_coin</sprite>
@@ -52,6 +53,7 @@
       <object>objects\obj_wall_projectile</object>
       <object>objects\obj_platform</object>
       <object>objects\obj_platform_moving</object>
+      <object>objects\obj_wall_falling</object>
       <object>objects\obj_slope</object>
     </objects>
     <objects name="ladders">
@@ -76,8 +78,8 @@
     <object>objects\obj_singleton</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_demo</room>
     <room>rooms\rm_test</room>
+    <room>rooms\rm_demo</room>
   </rooms>
   <constants number="2">
     <constant name="GM_build_date">41944.4744905671</constant>
