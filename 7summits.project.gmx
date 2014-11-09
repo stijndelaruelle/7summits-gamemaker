@@ -32,6 +32,9 @@
     <sprites name="tutorial">
       <sprite>sprites\spr_tut_jump</sprite>
     </sprites>
+    <sprites name="HUD">
+      <sprite>sprites\spr_hud_hearts</sprite>
+    </sprites>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_barrel</sprite>
     <sprite>sprites\spr_testslope</sprite>
@@ -57,7 +60,9 @@
       <object>objects\obj_ladder</object>
     </objects>
     <objects name="pickups">
+      <object>objects\par_pickup</object>
       <object>objects\obj_coin</object>
+      <object>objects\obj_heart</object>
     </objects>
     <objects name="triggers">
       <object>objects\obj_spawner</object>

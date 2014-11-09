@@ -40,14 +40,17 @@ m_AirJumps = m_MaxAirJumps;
 m_IsOnLadder = false;
 m_WasOnGround = false; //Were we on the ground last frame? Used for decending slopes
 
+//Stats
+m_MaxHealth = 6;
+m_Health = m_MaxHealth;
+m_Score = 0;
+
 //Shooting
 m_ReloadTime = 0;
 m_MaxReloadTime = 1;
 
 //Keys (that can be accessed)
 m_KeyDown = 0;
-
-//Internal
 
 //Spawnlocation
 m_SpawnX = x;
@@ -60,6 +63,35 @@ m_IsJumping = false;
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle death
+if (m_Health &lt;= 0)
+{
+    m_Health = m_MaxHealth;
+    x = m_SpawnX;
+    y = m_SpawnY;
+    
+    exit;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -387,7 +419,7 @@ if (m_HorizSpeed &gt; 0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_barrel">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -404,9 +436,49 @@ if (m_HorizSpeed &gt; 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///On Barrel Hit
-x = m_SpawnX;
-y = m_SpawnY;
+            <string>///Draw health
+var numHearts = ceil(m_MaxHealth / 2);
+
+for (var i = 0; i &lt; numHearts; ++i)
+{
+    //Determine the frame
+    var frame = 0;                              //Full heart
+    if (m_Health == (i * 2) + 1) { frame = 1; } //Half heart
+    else if (m_Health &lt;= (i * 2)){ frame = 2; } //Empty heart
+    
+    draw_sprite(spr_hud_hearts, frame, 16 + (i * 32), 16);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw score &amp; height
+draw_set_color(c_red);
+draw_text(16, 63, "Punten: " + string(m_Score));
+
+//Calculate height
+var height = room_height - abs(y) - 32; //32 is just the base floor
+height -= abs(bbox_bottom) - abs(y); //sprite_height * 0.5; //remove half of the sprite height
+height /= 32; //32 pixels = 1 meter
+height = floor(height); //floor the value
+
+draw_text(16, 80, "Hoogte: " + string(height) + " meter");
 </string>
           </argument>
         </arguments>
