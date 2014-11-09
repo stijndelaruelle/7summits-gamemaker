@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>///Initialize variables
 m_Speed = 10;
-m_JumpSpeed = 20;
+m_JumpSpeed = 2;
+m_MaxJumpSpeed = 15;
 m_HorizSpeed = 0;
 m_VertSpeed = 0;
 m_HorizCarrySpeed = 0;
@@ -46,10 +47,13 @@ m_MaxReloadTime = 1;
 //Keys (that can be accessed)
 m_KeyDown = 0;
 
+//Internal
+
 //Spawnlocation
 m_SpawnX = x;
 m_SpawnY = y;
 
+m_IsJumping = false;
 </string>
           </argument>
         </arguments>
@@ -80,20 +84,21 @@ var keyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(
 m_KeyDown = keyboard_check(vk_down) || keyboard_check(ord("S"));
 
 var jumpKey = keyboard_check_pressed(vk_space);
+var jumpKeyReleased = keyboard_check_released(vk_space);
 
 var shootKey = (mouse_button == mb_left);
-
+  
 //Check for ground
 if (place_meeting(x, y+1, par_solid) || m_IsOnLadder)
 {
     m_VertSpeed = 0;
     m_AirJumps = m_MaxAirJumps;
     
-    //Jumping
     if (jumpKey)
     {
-        m_VertSpeed = -m_JumpSpeed;
+        m_VertSpeed += -m_JumpSpeed; //Just so we leave the ground
         m_IsOnLadder = false;
+        m_IsJumping = true;
     }
 }
 
@@ -102,11 +107,30 @@ else
 {
     m_VertSpeed += global.Gravity;
     
+    //Jump height
+    if (jumpKeyReleased || m_VertSpeed &gt; 0) { m_IsJumping = false; }
+    
+    if (m_IsJumping)
+    {
+        var newVertSpeed = m_VertSpeed -(m_MaxJumpSpeed - -m_VertSpeed) * 0.75;
+        if ((m_VertSpeed - global.Gravity) == newVertSpeed)
+        {
+            
+            m_IsJumping = false;
+        }
+        else
+        {
+            m_VertSpeed = newVertSpeed;
+        }
+    }
+
+    //Airjumps
     if (m_AirJumps &gt; 0)
     {
         if (jumpKey)
         {
             m_VertSpeed = -m_JumpSpeed;
+            m_IsJumping = true;
             --m_AirJumps;
         }
     }

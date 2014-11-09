@@ -48,13 +48,16 @@ sprite_index = -1
           <argument>
             <kind>1</kind>
             <string>///Initialize variables
-m_Speed = 5;
-m_HorizSpeed = 0;
+m_Speed = 7;
+m_HorizSpeed = m_Speed;
 m_VertSpeed = 0;
-m_RotationSpeed = 5;
+m_RotationSpeed = 1.5;
+
+m_HorizDirection = 1;
 
 m_WasOnGround = false; //Used to roll of slopes
 m_HasBounced = false;
+m_HasTurned = false;
 
 m_DrawAngle = image_angle;
 </string>
@@ -80,7 +83,7 @@ m_DrawAngle = image_angle;
           <argument>
             <kind>1</kind>
             <string>///Handle collision &amp; movement
-//Check for ground
+var maxSlope = 10;
 
 //Set gravity
 if (place_meeting(x, y+1, par_solid) || place_meeting(x, y+1, par_solid_projectile))
@@ -93,20 +96,55 @@ else
 }
 
 //Horizontal collision
-if (m_VertSpeed == 0)
+var xOffset = m_Speed * m_HorizDirection * global.GameDeltaTime;
+if (place_meeting(x + xOffset, y, par_solid))
 {
-    if (place_meeting(x + (m_HorizSpeed * global.GameDeltaTime), y, par_solid) ||
-        place_meeting(x + (m_HorizSpeed * global.GameDeltaTime), y, par_solid_projectile))
+    var yOffset = 0;
+    
+    //Check how steep the slope is
+    while(place_meeting(x + xOffset, y - yOffset, par_solid) &amp;&amp; yOffset &lt;= maxSlope)
     {
-        //Just change directions
-        m_HorizSpeed *= -1;
+        ++yOffset;
+    }
+    
+    //To steep we can't climp it
+    if (yOffset &gt; maxSlope)
+    {
+        while (!place_meeting(x + m_HorizSpeed, y, par_solid))
+        {
+            x += m_HorizDirection; //Move 1 pixel at a time
+        }
+        m_HorizDirection *= -1;
+    }
+    else
+    {
+        y -= yOffset;
+    }
+    
+    //Slow down if we're going uphill!
+    m_HorizSpeed -= m_Speed * 0.1 * global.GameDeltaTime;
+    if (m_HorizSpeed &lt;= 0.0)
+    {
+        m_HorizDirection *= -1;
+        m_HorizSpeed = 0.0;
+        m_HasTurned = true;
     }
 }
 
-x += m_HorizSpeed * global.GameDeltaTime;
+//Speed up again when coming from a slope
+if (m_HasTurned &amp;&amp; m_HorizSpeed &lt; m_Speed)
+{
+     m_HorizSpeed += m_Speed * 0.05 * global.GameDeltaTime;
+     if (m_HorizSpeed &gt;= m_Speed)
+     {
+        m_HorizSpeed = m_Speed;
+        m_HasTurned = false;
+     }
+}
+
+x += m_HorizSpeed * m_HorizDirection * global.GameDeltaTime;
 
 //Vertical collision
-var maxSlope = 10;
 var isOnGround = false;
 
 //Check if we can run off a slope
@@ -137,15 +175,13 @@ if ((place_meeting(x, y + (m_VertSpeed * global.GameDeltaTime), par_solid) ||
     {
         y += sign(m_VertSpeed);
     }
-    m_VertSpeed = 0;
-    isOnGround = true;
-    
+
     //We touched the ground, bounce up a bit (to fake physics)
     if (!m_WasOnGround)
     {
         if (!m_HasBounced)
         {
-            m_VertSpeed = -5;    
+            m_VertSpeed *= -0.25;    
             if (m_HorizSpeed == 0) { m_HorizSpeed = m_Speed; }
             m_HasBounced = true;
         }
@@ -154,6 +190,12 @@ if ((place_meeting(x, y + (m_VertSpeed * global.GameDeltaTime), par_solid) ||
             m_HasBounced = false;
         }
     }
+    else
+    {
+        m_VertSpeed = 0;
+    }
+    
+    isOnGround = true;
 }
 
 m_WasOnGround = isOnGround;
@@ -185,7 +227,7 @@ y += m_VertSpeed * global.GameDeltaTime;
             <string>///Draw our sprite
 
 //Rotate
-m_DrawAngle += -sign(m_HorizSpeed) * m_RotationSpeed;
+m_DrawAngle += -m_HorizDirection * (abs(x - xprevious) * m_RotationSpeed);
 draw_sprite_ext(spr_barrel,0, x, y,image_xscale, image_yscale, m_DrawAngle, image_blend, image_alpha);
 </string>
           </argument>
