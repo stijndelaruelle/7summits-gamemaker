@@ -55,11 +55,11 @@
     <instance objName="obj_wall" x="0" y="0" name="inst_003B7B6A" locked="0" code="" scaleX="1" scaleY="38" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="768" y="0" name="inst_B3140823" locked="0" code="" scaleX="1" scaleY="38" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="32" y="0" name="inst_BF378CD8" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="96" y="1120" name="inst_FDC4CE03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="112" y="1136" name="inst_FDC4CE03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_destroyer" x="768" y="1152" name="inst_489D65F6" locked="0" code="m_Object[0] = obj_barrel;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="992" name="inst_5EE56FCF" locked="0" code="" scaleX="18" scaleY="0.5" colour="4294967295" rotation="352"/>
     <instance objName="obj_spawner" x="64" y="64" name="inst_5CCFAABA" locked="0" code="m_Object = obj_barrel;&#xA;m_SpawnRate = 3.0;&#xA;m_Instant = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_singleton" x="32" y="32" name="inst_EC5EBAE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_globals" x="32" y="32" name="inst_EC5EBAE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="320" y="1120" name="inst_B7B38300" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="480" y="1120" name="inst_E695440E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="608" y="1120" name="inst_84B7C882" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -104,7 +104,8 @@
     <instance objName="obj_spawner" x="128" y="64" name="inst_FD9D3338" locked="0" code="m_Object = obj_barrel;&#xA;m_SpawnRate = 3.0;&#xA;m_Instant = true;&#xA;m_HorizSpeed = 5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_destroyer" x="768" y="832" name="inst_735F7D5F" locked="0" code="m_Object[0] = obj_barrel;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_projectile" x="96" y="128" name="inst_FD0931A0" locked="0" code="" scaleX="19" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_heart" x="208" y="64" name="inst_76241A4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_door" x="256" y="64" name="inst_324B7C9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelsettings" x="32" y="96" name="inst_A76769FC" locked="0" code="///Initialize variables&#xA;m_SpawnX = 96;&#xA;m_SpawnY = 1120;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

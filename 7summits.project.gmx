@@ -39,6 +39,7 @@
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_barrel</sprite>
     <sprite>sprites\spr_testslope</sprite>
+    <sprite>sprites\spr_door</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -75,11 +76,14 @@
     </objects>
     <object>objects\obj_bullet</object>
     <object>objects\obj_barrel</object>
-    <object>objects\obj_singleton</object>
+    <object>objects\obj_door</object>
+    <object>objects\obj_globals</object>
+    <object>objects\obj_levelsettings</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
     <room>rooms\rm_demo</room>
+    <room>rooms\rm_demo2</room>
   </rooms>
   <constants number="2">
     <constant name="GM_build_date">41944.4744905671</constant>

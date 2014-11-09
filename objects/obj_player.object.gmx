@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-1</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_player_mask</maskName>
   <events>
@@ -44,17 +44,18 @@ m_WasOnGround = false; //Were we on the ground last frame? Used for decending sl
 m_MaxHealth = 6;
 m_Health = m_MaxHealth;
 m_Score = 0;
+m_TravelledHeight = 0;
+m_CurrentHeight = 0;
 
 //Shooting
 m_ReloadTime = 0;
 m_MaxReloadTime = 1;
 
-//Keys (that can be accessed)
+//Keys
+m_KeyLeft = 0;
+m_KeyRight = 0;
+m_KeyUp = 0;
 m_KeyDown = 0;
-
-//Spawnlocation
-m_SpawnX = x;
-m_SpawnY = y;
 
 m_IsJumping = false;
 </string>
@@ -83,12 +84,33 @@ m_IsJumping = false;
 if (m_Health &lt;= 0)
 {
     m_Health = m_MaxHealth;
-    x = m_SpawnX;
-    y = m_SpawnY;
+    
+    x = obj_levelsettings.m_SpawnX;
+    y = obj_levelsettings.m_SpawnY;
     
     exit;
 }
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>Input</string>
           </argument>
         </arguments>
       </action>
@@ -110,9 +132,9 @@ if (m_Health &lt;= 0)
             <kind>1</kind>
             <string>///Handle input
 
-var leftKey = keyboard_check(vk_left) || keyboard_check(ord("A")) || keyboard_check(ord("Q"));
-var rightKey = keyboard_check(vk_right) || keyboard_check(ord("D"));
-var keyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(ord("Z"));
+m_KeyLeft = keyboard_check(vk_left) || keyboard_check(ord("A")) || keyboard_check(ord("Q"));
+m_KeyRight = keyboard_check(vk_right) || keyboard_check(ord("D"));
+m_KeyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(ord("Z"));
 m_KeyDown = keyboard_check(vk_down) || keyboard_check(ord("S"));
 
 var jumpKey = keyboard_check_pressed(vk_space);
@@ -169,41 +191,23 @@ else
 }
 
 //Move left
-if (leftKey)
+if (m_KeyLeft)
 {
     m_HorizSpeed = -m_Speed;
 }
 
 //Move right
-if (rightKey)
+if (m_KeyRight)
 {
     m_HorizSpeed = m_Speed;
 }
 
-//Walljump
-//if (jumpKey)
-//{
-//    //Left walljump
-//    if (place_meeting(x-1, y, obj_solid) &amp;&amp; !place_meeting(x, y+1, obj_solid) &amp;&amp; rightKey)
-//    {
-//        m_VertSpeed = -m_JumpSpeed;
-//        m_HorizSpeed = -m_Speed;
-//    }
-//    
-//    //Right walljump
-//    if (place_meeting(x+1, y, obj_solid) &amp;&amp; !place_meeting(x, y+1, obj_solid) &amp;&amp; leftKey)
-//    {
-//        m_VertSpeed = -m_JumpSpeed;
-//        m_HorizSpeed = m_Speed;
-//    }
-//}
-
 //Ladder
 if (!m_IsOnLadder)
 {
-    if (keyUp || m_KeyDown)
+    if (m_KeyUp || m_KeyDown)
     {
-        if (place_meeting(x,y,par_ladder))
+        if (place_meeting(x, y, par_ladder))
         {
             m_IsOnLadder = true;
         }
@@ -214,19 +218,48 @@ if (m_IsOnLadder)
 {
     m_VertSpeed = 0;
     
-    if (keyUp) m_VertSpeed = -m_Speed/2;
+    if (m_KeyUp) m_VertSpeed = -m_Speed/2;
     if (m_KeyDown) m_VertSpeed = m_Speed/2;
     if (!place_meeting(x,y,par_ladder)) m_IsOnLadder = false;    
 }
 
 //Not moving
-if ((leftKey &amp;&amp; rightKey) || (!leftKey &amp;&amp; !rightKey))
+if ((m_KeyLeft &amp;&amp; m_KeyRight) || (!m_KeyLeft &amp;&amp; !m_KeyRight))
 {
     m_HorizSpeed = 0;
 }
 
 var finalHorizSpeed = m_HorizSpeed + m_HorizCarrySpeed;
 m_HorizCarrySpeed = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle door interaction
+if (m_KeyUp)
+{
+    if (place_meeting(x, y, obj_door))
+    {
+        room_goto(rm_demo2);
+        m_TravelledHeight += m_CurrentHeight;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -418,6 +451,56 @@ if (m_HorizSpeed &gt; 0)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Calculate height
+m_CurrentHeight = room_height - abs(y) - 32;  //32 is just the base floor
+m_CurrentHeight -= abs(bbox_bottom) - abs(y); //sprite_height * 0.5; //remove half of the sprite height
+m_CurrentHeight /= 32;                        //32 pixels = 1 meter
+m_CurrentHeight = floor(m_CurrentHeight);     //floor the value
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Respawn
+x = obj_levelsettings.m_SpawnX;
+y = obj_levelsettings.m_SpawnY;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="64">
       <action>
@@ -471,14 +554,7 @@ for (var i = 0; i &lt; numHearts; ++i)
             <string>///Draw score &amp; height
 draw_set_color(c_red);
 draw_text(16, 63, "Punten: " + string(m_Score));
-
-//Calculate height
-var height = room_height - abs(y) - 32; //32 is just the base floor
-height -= abs(bbox_bottom) - abs(y); //sprite_height * 0.5; //remove half of the sprite height
-height /= 32; //32 pixels = 1 meter
-height = floor(height); //floor the value
-
-draw_text(16, 80, "Hoogte: " + string(height) + " meter");
+draw_text(16, 80, "Hoogte: " + string(m_TravelledHeight + m_CurrentHeight) + " meter");
 </string>
           </argument>
         </arguments>
@@ -498,6 +574,31 @@ draw_text(16, 80, "Hoogte: " + string(height) + " meter");
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="9" enumb="71">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Goto goal
+x = obj_levelsettings.m_GoalX;
+y = obj_levelsettings.m_GoalY;
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

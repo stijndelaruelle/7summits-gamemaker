@@ -70,7 +70,7 @@
     <instance objName="obj_platform" x="768" y="496" name="inst_4960A5FC" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="10"/>
     <instance objName="obj_ladder" x="288" y="288" name="inst_ADF355B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rope" x="576" y="368" name="inst_F06E9A82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_singleton" x="64" y="64" name="inst_68801C42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_falling" x="80" y="288" name="inst_DA99DCC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="672" y="336" name="inst_AEDF5FD7" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope" x="1152" y="416" name="inst_55191104" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_projectile" x="768" y="496" name="inst_0D65165C" locked="0" code="" scaleX="23" scaleY="0.5" colour="4294967295" rotation="10"/>
@@ -95,7 +95,8 @@
     <instance objName="obj_wall_falling" x="176" y="288" name="inst_C1C710F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_falling" x="144" y="288" name="inst_DF75B304" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_falling" x="112" y="288" name="inst_2854B6BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wall_falling" x="80" y="288" name="inst_DA99DCC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_globals" x="48" y="48" name="inst_F5F57095" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelsettings" x="64" y="48" name="inst_1BD0384A" locked="0" code="///Initialize variables&#xA;m_SpawnX = 400;&#xA;m_SpawnY = 224;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
