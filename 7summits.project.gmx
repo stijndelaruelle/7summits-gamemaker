@@ -81,9 +81,10 @@
     <object>objects\obj_levelsettings</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test</room>
+    <room>rooms\rm_mainMenu</room>
     <room>rooms\rm_demo</room>
     <room>rooms\rm_demo2</room>
+    <room>rooms\rm_test</room>
   </rooms>
   <constants number="2">
     <constant name="GM_build_date">41944.4744905671</constant>
