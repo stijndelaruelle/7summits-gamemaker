@@ -61,14 +61,12 @@
     </sprites>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_barrel</sprite>
-    <sprite>sprites\spr_testslope</sprite>
     <sprite>sprites\spr_door</sprite>
-    <sprite>sprites\sprite41</sprite>
+    <sprite>sprites\sprite42</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_player_scale</object>
     <object>objects\obj_player</object>
     <objects name="walls">
       <objects name="parents">
@@ -80,11 +78,12 @@
       <object>objects\obj_platform</object>
       <object>objects\obj_platform_moving</object>
       <object>objects\obj_wall_falling</object>
-      <object>objects\obj_slope</object>
-      <object>objects\obj_Stone_Floor1</object>
-      <object>objects\obj_Stone_Floor2</object>
-      <object>objects\obj_Stone_Floor3</object>
-      <object>objects\obj_Stone_Floor4</object>
+      <objects name="visuals">
+        <object>objects\obj_Stone_Floor1</object>
+        <object>objects\obj_Stone_Floor2</object>
+        <object>objects\obj_Stone_Floor3</object>
+        <object>objects\obj_Stone_Floor4</object>
+      </objects>
     </objects>
     <objects name="ladders">
       <object>objects\par_ladder</object>
@@ -118,6 +117,7 @@
       <object>objects\obj_Tree_Leaves3</object>
       <object>objects\obj_Tree_Leaves4</object>
     </objects>
+    <object>objects\test_background</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_mainMenu</room>
