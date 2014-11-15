@@ -53,12 +53,14 @@ m_CurrentHeight = 0;
 //Shooting
 m_ReloadTime = 0;
 m_MaxReloadTime = 1;
+m_NumRopes = 1;
 
 //Keys
 m_KeyLeft = 0;
 m_KeyRight = 0;
 m_KeyUp = 0;
 m_KeyDown = 0;
+m_KeyAction = 0;
 
 m_IsJumping = false;
 </string>
@@ -150,6 +152,7 @@ m_KeyLeft = false;
 m_KeyRight = false;
 m_KeyUp = false;
 m_KeyDown = false;
+m_KeyAction = false;
 var jumpKey = false;
 var jumpKeyReleased = true;
 var shootKey = false;
@@ -160,10 +163,11 @@ if (m_IsInputEnabled)
     m_KeyRight = keyboard_check(vk_right) || keyboard_check(ord("D"));
     m_KeyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(ord("Z"));
     m_KeyDown = keyboard_check(vk_down) || keyboard_check(ord("S"));
+    m_KeyAction = keyboard_check(vk_enter);
     
     jumpKey = keyboard_check_pressed(vk_space);
     jumpKeyReleased = keyboard_check_released(vk_space);
-    shootKey = (mouse_button == mb_left);
+    shootKey = keyboard_check(vk_control);
 }
 
 //Check for ground
@@ -226,15 +230,21 @@ else
 //Move left
 if (m_KeyLeft)
 {
-    m_HorizSpeed = m_Speed;
-    m_HorizDirection = -1;
+    //if ((!m_KeyUp &amp;&amp; !m_KeyDown))// || m_IsOnLadder)
+    //{
+        m_HorizSpeed = m_Speed;
+        m_HorizDirection = -1;
+    //}
 }
 
 //Move right
 if (m_KeyRight)
 {
-    m_HorizSpeed = m_Speed;
-    m_HorizDirection = 1;
+    //if ((!m_KeyUp &amp;&amp; !m_KeyDown))// || m_IsOnLadder)
+    //{
+        m_HorizSpeed = m_Speed;
+        m_HorizDirection = 1;
+    //}
 }
 
 //Ladder
@@ -251,9 +261,16 @@ if (!m_IsOnLadder)
 
 if (m_IsOnLadder)
 {
-    m_VertSpeed = (m_Speed * 2) / 3;
-    if (m_KeyUp)    m_VertDirection = -1;
-    if (m_KeyDown)  m_VertDirection = 1;
+    if (m_KeyUp)   
+    {
+        m_VertDirection = -1;
+        m_VertSpeed = (m_Speed * 2) / 3;
+    }
+    if (m_KeyDown)
+    {
+        m_VertDirection = 1;
+        m_VertSpeed = (m_Speed * 2) / 3;
+    }
     
     if (!place_meeting(x,y,par_ladder)) m_IsOnLadder = false;    
 }
@@ -291,20 +308,34 @@ if (m_ReloadTime &gt; 0)
 {
     m_ReloadTime -= global.DeltaTime;
 }
-else if (shootKey)
+else if (shootKey &amp;&amp; m_NumRopes &gt; 0)
 {
-    var angle = point_direction(x, y, mouse_x, mouse_y);
+    var bullet = instance_create(x, y, obj_rope_flying);
+
+    //Determine bullet direction
+    if (m_KeyLeft)  bullet.m_DirectionX = -1;
+    if (m_KeyRight) bullet.m_DirectionX = 1;
     
-    var bullet = instance_create(x, y, obj_bullet);
-    bullet.m_DirectionX = cos(angle * (pi / 180));
-    bullet.m_DirectionY = sin(angle * (pi / 180));
+    if (m_KeyUp)    bullet.m_DirectionY = -1
+    if (m_KeyDown)  bullet.m_DirectionY = 1;
+    
+    //Detault throw up
+    if (bullet.m_DirectionX == 0 &amp;&amp; bullet.m_DirectionY == 0)
+    {
+        bullet.m_DirectionY = 1
+    }
+    
+    var angle = point_direction(x, y, x + bullet.m_DirectionX, y + bullet.m_DirectionY);
     bullet.image_angle = angle;
     
-    //offet the bullet so he doesn't spawn in us.
-    bullet.x += bullet.m_DirectionX * 32;
-    bullet.y -= bullet.m_DirectionY * 32;
+    //we don't use our mouse anymore for shooting
+    //var angle = point_direction(x, y, mouse_x, mouse_y);
+    //bullet.m_DirectionX = cos(angle * (pi / 180));
+    //bullet.m_DirectionY = sin(angle * (pi / 180));
+    //bullet.image_angle = angle;
     
     m_ReloadTime = m_MaxReloadTime;
+    m_NumRopes -= 1;
 }
 </string>
           </argument>
@@ -505,6 +536,30 @@ m_CurrentHeight = floor(m_CurrentHeight);     //floor the value
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="112">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Refil ammo
+m_NumRopes = 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -554,10 +609,11 @@ for (var i = 0; i &lt; numHearts; ++i)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw score &amp; height
+            <string>///Draw score, height &amp; num ropes
 draw_set_color(c_red);
 draw_text(16, 63, "Punten: " + string(m_Score));
 draw_text(16, 80, "Hoogte: " + string(m_TravelledHeight + m_CurrentHeight) + " meter");
+draw_text(16, 97, "Touwen: " + string(m_NumRopes));
 </string>
           </argument>
         </arguments>
@@ -566,17 +622,24 @@ draw_text(16, 80, "Hoogte: " + string(m_TravelledHeight + m_CurrentHeight) + " m
     <event eventtype="9" enumb="82">
       <action>
         <libid>1</libid>
-        <id>331</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_restart_game</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto(rm_mainMenu);
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="9" enumb="71">
@@ -596,9 +659,13 @@ draw_text(16, 80, "Hoogte: " + string(m_TravelledHeight + m_CurrentHeight) + " m
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Goto goal
-x = obj_levelsettings.m_GoalX;
-y = obj_levelsettings.m_GoalY;
+            <string>///Warp to target position (mouse)
+x = mouse_x;
+y = mouse_y;
+m_VertSpeed = 0;
+m_VertDirection = 1;
+m_HorizSpeed = 0;
+m_HorizDirection = 1;
 </string>
           </argument>
         </arguments>

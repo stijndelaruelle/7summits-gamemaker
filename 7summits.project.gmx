@@ -94,6 +94,7 @@
     <objects name="pickups">
       <object>objects\par_pickup</object>
       <object>objects\obj_coin</object>
+      <object>objects\obj_rope_pickup</object>
       <object>objects\obj_heart</object>
     </objects>
     <objects name="triggers">
@@ -104,7 +105,7 @@
     <objects name="tutorial">
       <object>objects\obj_tut_jump</object>
     </objects>
-    <object>objects\obj_bullet</object>
+    <object>objects\obj_rope_flying</object>
     <object>objects\obj_barrel</object>
     <object>objects\obj_door</object>
     <object>objects\obj_globals</object>

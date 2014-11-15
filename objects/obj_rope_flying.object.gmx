@@ -60,7 +60,7 @@ m_IsInitialized = false;
 if (!m_IsInitialized)
 {
     m_HorizSpeed = m_Speed * m_DirectionX;
-    m_VertSpeed = -m_Speed * m_DirectionY;
+    m_VertSpeed =  m_Speed * m_DirectionY;
     m_IsInitialized = true;
 }
 </string>
@@ -84,7 +84,7 @@ if (!m_IsInitialized)
           <argument>
             <kind>1</kind>
             <string>///Handle collision &amp; movement
-m_VertSpeed += global.Gravity * 0.6; //lower gravity just feels better
+m_VertSpeed += global.Gravity * 0.4; //lower gravity just feels better
 
 var offsetX = m_HorizSpeed * global.GameDeltaTime;
 var offsetY = m_VertSpeed * global.GameDeltaTime;
@@ -109,10 +109,15 @@ if (place_meeting(x + offsetX, y + offsetY, par_solid) ||
     //Spawn a rope, and destroy ourselves
     if (length &gt; 0)
     {
+        //The rope we can climb
         var spawnY = y;
         if (m_VertSpeed &lt; 0) spawnY -= 16;
         var rope = instance_create(x, spawnY, obj_rope);
         rope.image_yscale = length;
+        
+        //The rope pickup
+        var rope_pickup = instance_create(x, spawnY - 16, obj_rope_pickup);
+        rope_pickup.m_RopeInstance = rope;
     }
     
     instance_destroy();
