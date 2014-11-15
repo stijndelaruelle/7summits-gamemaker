@@ -60,7 +60,6 @@ if (instance_exists(obj_player))
     //The player is below us or he just pressed down
     if ((round(obj_player.y + (sprite_get_height(obj_player.mask_index)/2)) &gt; ourY) || (obj_player.m_KeyDown))
     {
-        show_debug_message(string(round(obj_player.y + (sprite_get_height(obj_player.mask_index)))));
         mask_index = -1;
     }
     

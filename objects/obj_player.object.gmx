@@ -33,12 +33,15 @@ m_HorizSpeed = 0;
 m_VertSpeed = 0;
 m_HorizCarrySpeed = 0;
 m_VertCarrySpeed = 0;
+m_HorizDirection = 0;
+m_VertDirection = 0;
 
-m_MaxAirJumps = 0; //No double jumping (at least not at the beginning)
+m_MaxAirJumps = 0;      //No double jumping (at least not at the beginning)
 m_AirJumps = m_MaxAirJumps;
 
+m_IsInputEnabled = true;
 m_IsOnLadder = false;
-m_WasOnGround = false; //Were we on the ground last frame? Used for decending slopes
+m_WasOnGround = false;  //Were we on the ground last frame? Used for decending slopes
 
 //Stats
 m_MaxHealth = 6;
@@ -85,8 +88,7 @@ if (m_Health &lt;= 0)
 {
     m_Health = m_MaxHealth;
     
-    x = obj_levelsettings.m_SpawnX;
-    y = obj_levelsettings.m_SpawnY;
+    //Respawn;
     
     exit;
 }
@@ -131,26 +133,37 @@ if (m_Health &lt;= 0)
           <argument>
             <kind>1</kind>
             <string>///Handle input
+m_KeyLeft = false;
+m_KeyRight = false;
+m_KeyUp = false;
+m_KeyDown = false;
+var jumpKey = false;
+var jumpKeyReleased = true;
+var shootKey = false;
+    
+if (m_IsInputEnabled)
+{
+    m_KeyLeft = keyboard_check(vk_left) || keyboard_check(ord("A")) || keyboard_check(ord("Q"));
+    m_KeyRight = keyboard_check(vk_right) || keyboard_check(ord("D"));
+    m_KeyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(ord("Z"));
+    m_KeyDown = keyboard_check(vk_down) || keyboard_check(ord("S"));
+    
+    jumpKey = keyboard_check_pressed(vk_space);
+    jumpKeyReleased = keyboard_check_released(vk_space);
+    shootKey = (mouse_button == mb_left);
+}
 
-m_KeyLeft = keyboard_check(vk_left) || keyboard_check(ord("A")) || keyboard_check(ord("Q"));
-m_KeyRight = keyboard_check(vk_right) || keyboard_check(ord("D"));
-m_KeyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(ord("Z"));
-m_KeyDown = keyboard_check(vk_down) || keyboard_check(ord("S"));
-
-var jumpKey = keyboard_check_pressed(vk_space);
-var jumpKeyReleased = keyboard_check_released(vk_space);
-
-var shootKey = (mouse_button == mb_left);
-  
 //Check for ground
 if (place_meeting(x, y+1, par_solid) || m_IsOnLadder)
 {
     m_VertSpeed = 0;
+    m_VertDirection = 1;
     m_AirJumps = m_MaxAirJumps;
     
     if (jumpKey)
     {
-        m_VertSpeed += -m_JumpSpeed; //Just so we leave the ground
+        m_VertSpeed = m_JumpSpeed; //Just so we leave the ground
+        m_VertDirection = -1;
         m_IsOnLadder = false;
         m_IsJumping = true;
     }
@@ -159,17 +172,16 @@ if (place_meeting(x, y+1, par_solid) || m_IsOnLadder)
 //We're in the air
 else
 {
-    m_VertSpeed += global.Gravity;
+    m_VertSpeed += m_VertDirection * global.Gravity;
     
     //Jump height
-    if (jumpKeyReleased || m_VertSpeed &gt; 0) { m_IsJumping = false; }
+    if (jumpKeyReleased || m_VertDirection &gt; 0) { m_IsJumping = false; }
     
     if (m_IsJumping)
     {
-        var newVertSpeed = m_VertSpeed -(m_MaxJumpSpeed - -m_VertSpeed) * 0.75;
-        if ((m_VertSpeed - global.Gravity) == newVertSpeed)
+        var newVertSpeed = m_VertSpeed + (m_MaxJumpSpeed - m_VertSpeed) * 0.75;
+        if ((m_VertSpeed + global.Gravity) == newVertSpeed)
         {
-            
             m_IsJumping = false;
         }
         else
@@ -183,23 +195,33 @@ else
     {
         if (jumpKey)
         {
-            m_VertSpeed = -m_JumpSpeed;
+            m_VertSpeed = m_JumpSpeed;
+            m_VertDirection = -1;
             m_IsJumping = true;
             --m_AirJumps;
         }
+    }
+    
+    //Turn around mid air
+    if (m_VertSpeed &lt;= 0)
+    {
+        m_VertDirection = 1; //Flip direction
+        m_VertSpeed = 0;
     }
 }
 
 //Move left
 if (m_KeyLeft)
 {
-    m_HorizSpeed = -m_Speed;
+    m_HorizSpeed = m_Speed;
+    m_HorizDirection = -1;
 }
 
 //Move right
 if (m_KeyRight)
 {
     m_HorizSpeed = m_Speed;
+    m_HorizDirection = 1;
 }
 
 //Ladder
@@ -216,48 +238,19 @@ if (!m_IsOnLadder)
 
 if (m_IsOnLadder)
 {
-    m_VertSpeed = 0;
+    m_VertSpeed = (m_Speed * 2) / 3;
+    if (m_KeyUp)    m_VertDirection = -1;
+    if (m_KeyDown)  m_VertDirection = 1;
     
-    if (m_KeyUp) m_VertSpeed = -(m_Speed * 2) / 3;
-    if (m_KeyDown) m_VertSpeed = -(m_Speed * 2) / 3;
     if (!place_meeting(x,y,par_ladder)) m_IsOnLadder = false;    
 }
 
 //Not moving
 if ((m_KeyLeft &amp;&amp; m_KeyRight) || (!m_KeyLeft &amp;&amp; !m_KeyRight))
 {
-    m_HorizSpeed = 0;
-}
-
-var finalHorizSpeed = m_HorizSpeed + m_HorizCarrySpeed;
-m_HorizCarrySpeed = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle door interaction
-if (m_KeyUp)
-{
-    if (place_meeting(x, y, obj_door))
+    if (m_IsInputEnabled)
     {
-        room_goto(rm_demo2);
-        m_TravelledHeight += m_CurrentHeight;
+        m_HorizSpeed = 0;
     }
 }
 </string>
@@ -323,6 +316,9 @@ else if (shootKey)
             <string>///Handle collisions &amp; movement
 var maxSlope = 10;
 
+var finalHorizSpeed = (m_HorizSpeed * m_HorizDirection) + m_HorizCarrySpeed;
+m_HorizCarrySpeed = 0;
+
 //Horizontal collision
 if (place_meeting(x + (finalHorizSpeed * global.GameDeltaTime), y, par_solid))
 {
@@ -337,9 +333,9 @@ if (place_meeting(x + (finalHorizSpeed * global.GameDeltaTime), y, par_solid))
     //To steep we can't climp it
     if (yOffset &gt; maxSlope)
     {
-        while (!place_meeting(x + sign(finalHorizSpeed), y, par_solid))
+        while (!place_meeting(x + m_HorizDirection, y, par_solid))
         {
-            x += sign(finalHorizSpeed);
+            x += m_HorizDirection;
         }
         finalHorizSpeed = 0;
     }
@@ -356,7 +352,7 @@ x += finalHorizSpeed * global.GameDeltaTime;
 var isOnGround = false;
 
 //Check if we can run off a slope
-if (m_WasOnGround &amp;&amp; m_VertSpeed == 0)
+if (m_WasOnGround &amp;&amp; m_VertSpeed == 0 &amp;&amp; !m_IsOnLadder)
 {
     if (place_meeting(x, y + maxSlope, par_solid))
     {
@@ -371,11 +367,11 @@ if (m_WasOnGround &amp;&amp; m_VertSpeed == 0)
     }
 }
 
-if (place_meeting(x, y + (m_VertSpeed * global.GameDeltaTime), par_solid) &amp;&amp; !isOnGround)
+if (place_meeting(x, y + (m_VertSpeed * m_VertDirection * global.GameDeltaTime), par_solid) &amp;&amp; !isOnGround)
 {
-    while (!place_meeting(x, y + sign(m_VertSpeed), par_solid))
+    while (!place_meeting(x, y + m_VertDirection, par_solid))
     {
-        y += sign(m_VertSpeed);
+        y += m_VertDirection;
     }
     m_VertSpeed = 0;
     isOnGround = true;
@@ -384,7 +380,7 @@ if (place_meeting(x, y + (m_VertSpeed * global.GameDeltaTime), par_solid) &amp;&
 m_WasOnGround = isOnGround;
 
 //Move vertically
-y += m_VertSpeed * global.GameDeltaTime;
+y += m_VertSpeed * m_VertDirection * global.GameDeltaTime;
 </string>
           </argument>
         </arguments>
@@ -438,12 +434,11 @@ else
 }
 
 //Flip the sprite acoording to our direction
-if (m_HorizSpeed &lt; 0)
+if (m_HorizDirection &lt; 0)
 {
     image_xscale = 1;
 }
-
-if (m_HorizSpeed &gt; 0)
+else
 {
     image_xscale = -1;
 }
@@ -492,31 +487,6 @@ m_CurrentHeight = room_height - abs(y) - 32;  //32 is just the base floor
 m_CurrentHeight -= abs(bbox_bottom) - abs(y); //sprite_height * 0.5; //remove half of the sprite height
 m_CurrentHeight /= 32;                        //32 pixels = 1 meter
 m_CurrentHeight = floor(m_CurrentHeight);     //floor the value
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Respawn
-x = obj_levelsettings.m_SpawnX;
-y = obj_levelsettings.m_SpawnY;
 </string>
           </argument>
         </arguments>

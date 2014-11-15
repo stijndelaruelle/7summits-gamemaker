@@ -55,37 +55,22 @@
     <instance objName="obj_wall" x="0" y="32" name="inst_E00BDC1A" locked="0" code="" scaleX="1" scaleY="23" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1472" y="32" name="inst_F611D3B8" locked="0" code="" scaleX="1" scaleY="23" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_projectile" x="755" y="134" name="inst_3DD5356B" locked="0" code="" scaleX="4" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="574" y="496" name="inst_DB0ECC69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_globals" x="32" y="32" name="inst_174B1C88" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="1056" y="592" name="inst_57736FE9" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_door" x="1136" y="496" name="inst_50C85496" locked="0" code="m_LevelName = rm_mainMenu;&#xA;m_Direction = 1;    //Only warp if the player runs in the same direction&#xA;m_AutoWarp = true;  //If false, this is a door (player needs to press a button)&#xA;m_SpawnX = 100;       //The position the player will spawn at&#xA;m_SpawnY = 100;&#xA;" scaleX="1.5" scaleY="1.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor1" x="192" y="568" name="inst_A31CD7E2" locked="0" code="depth = -1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor2" x="432" y="576" name="inst_D034EB7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor3" x="544" y="576" name="inst_F33D8827" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor4" x="688" y="576" name="inst_0AB3E903" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor4" x="448" y="576" name="inst_FA799448" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Tree_Root1" x="696" y="496" name="inst_80423909" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="755" y="134" name="inst_F952C5F8" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Tree_Root1" x="456" y="496" name="inst_1EAEBA43" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Tree_Trunk1" x="432" y="176" name="inst_59F3E78A" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Tree_Leaves1" x="664" y="384" name="inst_4140790C" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Tree_Leaves3" x="660" y="277" name="inst_1389A2CC" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Tree_Leaves3" x="216" y="16" name="inst_A8187777" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Tree_Leaves4" x="168" y="80" name="inst_5D34AB52" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Tree_Trunk2" x="208" y="208" name="inst_0FAF0E95" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="192" y="592" name="inst_98E271D4" locked="0" code="" scaleX="19.5" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ladder" x="271" y="338" name="inst_C780A8F8" locked="0" code="" scaleX="1.35000002384186" scaleY="8" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ladder" x="251" y="239" name="inst_EFC82841" locked="0" code="" scaleX="1.35000002384186" scaleY="4.35483884811401" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ladder" x="459" y="206" name="inst_FC7857EC" locked="0" code="" scaleX="1.35000002384186" scaleY="12" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ladder" x="695" y="446" name="inst_408A6E47" locked="0" code="" scaleX="1.35000002384186" scaleY="4.53000020980835" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_projectile" x="852" y="412" name="inst_4BE535DA" locked="0" code="" scaleX="4.40000009536743" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor3" x="1040" y="576" name="inst_29AFDF34" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor2" x="750" y="118" name="inst_D2EEBA87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="852" y="412" name="inst_45FE9EE3" locked="0" code="" scaleX="4.40000009536743" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor1" x="846" y="398" name="inst_86FDAB96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_projectile" x="192" y="592" name="inst_8E40580B" locked="0" code="" scaleX="19.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wall_projectile" x="852" y="412" name="inst_4BE535DA" locked="0" code="" scaleX="4.40000009536743" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stone_Floor2" x="750" y="118" name="inst_D2EEBA87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="755" y="134" name="inst_F952C5F8" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stone_Floor3" x="1040" y="576" name="inst_29AFDF34" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="1056" y="592" name="inst_57736FE9" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_door" x="1136" y="496" name="inst_50C85496" locked="0" code="m_LevelName = rm_level1;&#xA;m_Direction = 1;    //Only warp if the player runs in the same direction&#xA;m_AutoWarp = true;  //If false, this is a door (player needs to press a button)&#xA;m_SpawnX = 1000;    //The position the player will spawn at&#xA;m_SpawnY = 100;&#xA;" scaleX="1.5" scaleY="1.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_door" x="1136" y="496" name="inst_AFB72D64" locked="0" code="m_LevelName = rm_level1;&#xA;m_Direction = 1;    //Only warp if the player runs in the same direction&#xA;m_AutoWarp = true;  //If false, this is a door (player needs to press a button)&#xA;m_SpawnX = 1000;    //The position the player will spawn at&#xA;m_SpawnY = 100;&#xA;" scaleX="1.5" scaleY="1.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_door" x="192" y="480" name="inst_1F0AD5D9" locked="0" code="m_LevelName = rm_level1;&#xA;m_Direction = -1;    //Only warp if the player runs in the same direction&#xA;m_AutoWarp = false;  //If false, this is a door (player needs to press a button)&#xA;m_SpawnX = 500;    //The position the player will spawn at&#xA;m_SpawnY = 100;&#xA;" scaleX="1.5" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="192" y="592" name="inst_98E271D4" locked="0" code="" scaleX="19.5" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
