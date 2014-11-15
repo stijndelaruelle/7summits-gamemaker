@@ -71,6 +71,9 @@
     <instance objName="obj_Stone_Floor1" x="846" y="398" name="inst_86FDAB96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_projectile" x="192" y="592" name="inst_8E40580B" locked="0" code="" scaleX="19.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="192" y="592" name="inst_98E271D4" locked="0" code="" scaleX="19.5" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_spawner" x="208" y="432" name="inst_C954E202" locked="0" code="///Initialize variables&#xA;m_Object = obj_barrel;&#xA;m_SpawnRate = 1.0;&#xA;m_Instant = false;&#xA;m_HorizSpeed = 5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_checkpoint" x="928" y="320" name="inst_DFC3A00B" locked="0" code="" scaleX="2" scaleY="5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_checkpoint" x="816" y="64" name="inst_19115C10" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

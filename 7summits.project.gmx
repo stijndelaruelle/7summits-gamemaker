@@ -52,6 +52,7 @@
     <sprites name="triggers">
       <sprite>sprites\spr_spawner</sprite>
       <sprite>sprites\spr_destroyer</sprite>
+      <sprite>sprites\spr_checkpoint</sprite>
     </sprites>
     <sprites name="tutorial">
       <sprite>sprites\spr_tut_jump</sprite>
@@ -98,6 +99,7 @@
     <objects name="triggers">
       <object>objects\obj_spawner</object>
       <object>objects\obj_destroyer</object>
+      <object>objects\obj_checkpoint</object>
     </objects>
     <objects name="tutorial">
       <object>objects\obj_tut_jump</object>

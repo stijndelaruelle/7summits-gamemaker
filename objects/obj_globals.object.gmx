@@ -29,6 +29,11 @@
 global.Gravity = 1;
 global.DeltaTime = 0;
 global.GameDeltaTime = 0;
+
+//Checkpoints
+global.CheckpointLevel = rm_mainMenu;
+global.CheckpointX = 0;
+global.CheckpointY = 0;
 </string>
           </argument>
         </arguments>

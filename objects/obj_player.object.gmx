@@ -86,9 +86,22 @@ m_IsJumping = false;
             <string>///Handle death
 if (m_Health &lt;= 0)
 {
-    m_Health = m_MaxHealth;
+    //Play death animation
+    //m_IsInputEnabled = false;
     
-    //Respawn;
+    //When death animation is done
+    
+    //Respawn
+    m_Health = m_MaxHealth;
+    if (room != global.CheckpointLevel)
+    {
+        room_goto(global.CheckpointLevel);
+    }
+    
+    x = global.CheckpointX;
+    y = global.CheckpointY;
+    
+    //m_IsInputEnabled = true;
     
     exit;
 }
