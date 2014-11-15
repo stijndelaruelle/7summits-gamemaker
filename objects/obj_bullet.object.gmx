@@ -3,7 +3,7 @@
   <spriteName>spr_bullet</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -93,10 +93,10 @@ var offsetY = m_VertSpeed * global.GameDeltaTime;
 if (place_meeting(x + offsetX, y + offsetY, par_solid) ||
     place_meeting(x + offsetX, y + offsetY, par_solid_projectile))
 {
-    //Check how long our rope can be (50, 100, 150 or 200)
+    //Check how long our rope can be (50, 100, 150, 200, 250 or 300)
     var length = 0;
     var i;
-    for (i = 1; i &lt; 5; ++i)
+    for (i = 1; i &lt; 6; ++i)
     {
         if (!place_meeting(x, y + (50 * i), par_solid))
         {
@@ -109,7 +109,9 @@ if (place_meeting(x + offsetX, y + offsetY, par_solid) ||
     //Spawn a rope, and destroy ourselves
     if (length &gt; 0)
     {
-        var rope = instance_create(x, y, obj_rope);
+        var spawnY = y;
+        if (m_VertSpeed &lt; 0) spawnY -= 16;
+        var rope = instance_create(x, spawnY, obj_rope);
         rope.image_yscale = length;
     }
     

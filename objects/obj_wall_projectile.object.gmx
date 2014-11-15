@@ -3,7 +3,7 @@
   <spriteName>spr_solid_projectile</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>1</depth>
+  <depth>-9</depth>
   <persistent>0</persistent>
   <parentName>par_solid_projectile</parentName>
   <maskName>&lt;undefined&gt;</maskName>
