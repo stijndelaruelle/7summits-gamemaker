@@ -41,6 +41,7 @@ m_AirJumps = m_MaxAirJumps;
 
 m_IsInputEnabled = true;
 m_IsOnLadder = false;
+m_IsDucking = false;
 m_WasOnGround = false;  //Were we on the ground last frame? Used for decending slopes
 
 //Stats
@@ -61,6 +62,7 @@ m_KeyRight = 0;
 m_KeyUp = 0;
 m_KeyDown = 0;
 m_KeyAction = 0;
+m_KeyJump = 0;
 
 m_IsJumping = false;
 </string>
@@ -153,31 +155,36 @@ m_KeyRight = false;
 m_KeyUp = false;
 m_KeyDown = false;
 m_KeyAction = false;
-var jumpKey = false;
-var jumpKeyReleased = true;
+m_KeyJump = false;
+var keyJump = false;
+var keyJumpReleased = true;
 var shootKey = false;
-    
+
 if (m_IsInputEnabled)
 {
     m_KeyLeft = keyboard_check(vk_left) || keyboard_check(ord("A")) || keyboard_check(ord("Q"));
     m_KeyRight = keyboard_check(vk_right) || keyboard_check(ord("D"));
     m_KeyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(ord("Z"));
     m_KeyDown = keyboard_check(vk_down) || keyboard_check(ord("S"));
+
+    m_KeyJump = keyboard_check(vk_space);
+    keyJump = keyboard_check_pressed(vk_space);
+    keyJumpReleased = keyboard_check_released(vk_space);
     m_KeyAction = keyboard_check(vk_enter);
-    
-    jumpKey = keyboard_check_pressed(vk_space);
-    jumpKeyReleased = keyboard_check_released(vk_space);
     shootKey = keyboard_check(vk_control);
 }
 
 //Check for ground
-if (place_meeting(x, y+1, par_solid) || m_IsOnLadder)
+var onGround = place_meeting(x, y+1, par_solid);
+
+if (onGround || m_IsOnLadder)
 {
     m_VertSpeed = 0;
     m_VertDirection = 1;
     m_AirJumps = m_MaxAirJumps;
     
-    if (jumpKey)
+    //Jumping
+    if (m_KeyJump &amp;&amp; !m_KeyDown)
     {
         m_VertSpeed = m_JumpSpeed; //Just so we leave the ground
         m_VertDirection = -1;
@@ -192,7 +199,7 @@ else
     m_VertSpeed += m_VertDirection * global.Gravity;
     
     //Jump height
-    if (jumpKeyReleased || m_VertDirection &gt; 0) { m_IsJumping = false; }
+    if (keyJumpReleased || m_VertDirection &gt; 0) { m_IsJumping = false; }
     
     if (m_IsJumping)
     {
@@ -210,7 +217,7 @@ else
     //Airjumps
     if (m_AirJumps &gt; 0)
     {
-        if (jumpKey)
+        if (m_KeyJump &amp;&amp; !m_KeyDown)
         {
             m_VertSpeed = m_JumpSpeed;
             m_VertDirection = -1;
@@ -230,22 +237,41 @@ else
 //Move left
 if (m_KeyLeft)
 {
-    //if ((!m_KeyUp &amp;&amp; !m_KeyDown))// || m_IsOnLadder)
-    //{
-        m_HorizSpeed = m_Speed;
-        m_HorizDirection = -1;
-    //}
+    m_HorizSpeed = m_Speed;
+    m_HorizDirection = -1;
 }
 
 //Move right
 if (m_KeyRight)
 {
-    //if ((!m_KeyUp &amp;&amp; !m_KeyDown))// || m_IsOnLadder)
-    //{
-        m_HorizSpeed = m_Speed;
-        m_HorizDirection = 1;
-    //}
+    m_HorizSpeed = m_Speed;
+    m_HorizDirection = 1;
 }
+
+    
+//Ducking
+if (onGround)
+{
+    if (m_KeyDown)
+    {
+        m_IsDucking = true;
+    }
+}
+
+if ((m_IsDucking &amp;&amp; !m_KeyDown) || !onGround)
+{
+    //Check if we can stand there
+    mask_index = spr_player_mask;
+    if (!place_meeting(x, y, par_solid))
+    {
+        m_IsDucking = false;
+    }
+    else
+    {
+        mask_index = spr_player_mask_crouch;
+    }
+}
+    
 
 //Ladder
 if (!m_IsOnLadder)
@@ -350,8 +376,14 @@ else if (shootKey &amp;&amp; m_NumRopes &gt; 0)
             <kind>1</kind>
             <string>///Handle collisions &amp; movement
 var maxSlope = 10;
+var finalHorizSpeed = m_HorizSpeed;
 
-var finalHorizSpeed = (m_HorizSpeed * m_HorizDirection) + m_HorizCarrySpeed;
+if (m_IsDucking)
+{
+    finalHorizSpeed *= 0.5;
+}
+
+finalHorizSpeed = (finalHorizSpeed * m_HorizDirection) + m_HorizCarrySpeed;
 m_HorizCarrySpeed = 0;
 
 //Horizontal collision
@@ -476,6 +508,17 @@ if (m_HorizDirection &lt; 0)
 else
 {
     image_xscale = -1;
+}
+
+if (m_IsDucking)
+{
+    sprite_index = spr_dude_scaleref_crouch;
+    mask_index = spr_player_mask_crouch;
+}
+else
+{
+    sprite_index = spr_dude_scaleref;
+    mask_index = spr_player_mask;
 }
 </string>
           </argument>

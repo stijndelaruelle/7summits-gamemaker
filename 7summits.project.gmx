@@ -29,7 +29,9 @@
       <sprite>sprites\spr_player_walk</sprite>
       <sprite>sprites\spr_player_jump</sprite>
       <sprite>sprites\spr_player_mask</sprite>
+      <sprite>sprites\spr_player_mask_crouch</sprite>
       <sprite>sprites\spr_dude_scaleref</sprite>
+      <sprite>sprites\spr_dude_scaleref_crouch</sprite>
     </sprites>
     <sprites name="walls">
       <sprite>sprites\spr_solid</sprite>
@@ -80,6 +82,7 @@
       <script>scripts\draw_background_tiled_horizontal.gml</script>
       <script>scripts\draw_background_tiled_vertical.gml</script>
     </scripts>
+    <script>scripts\echo.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
