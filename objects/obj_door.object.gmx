@@ -36,6 +36,7 @@ m_SpawnY = 0;
 //Internal
 m_IsColliding = false;
 m_IsTransitioning = false;
+m_IsInitialized = false;
 </string>
           </argument>
         </arguments>
@@ -73,7 +74,6 @@ if (place_meeting(x, y, obj_player))
         //Only auto fade if the player is facing the same direction
         if (obj_player.m_HorizDirection == m_Direction)
         {
-            obj_player.m_IsInputEnabled = false;
             obj_player.m_HorizSpeed = 2.0;
             m_IsTransitioning = true;
         }
@@ -88,7 +88,6 @@ else
     //Make sure the player's input is enabled again
     if (m_IsColliding &amp;&amp; !m_IsTransitioning)
     {
-        obj_player.m_IsInputEnabled = true;
         m_IsColliding = false;
         m_IsTransitioning = false;
     }
@@ -117,14 +116,17 @@ else
 if (m_IsTransitioning)
 {
     //Nice transition
-    if (obj_fader.m_IsFading == false)
+    if (!m_IsInitialized)
     {
+        m_IsInitialized = true;
+            
         obj_fader.m_FadeTime = 1.0;
         obj_fader.m_IsFading = true;
+        obj_fader.m_IsInitialized = false;
     }
     
     //When we are halfway, change room
-    if (obj_fader.m_FadeDirection &gt; 0)
+    else if (obj_fader.m_FadeDirection &gt; 0)
     {
         room_goto(m_LevelName);
         obj_player.x = m_SpawnX;

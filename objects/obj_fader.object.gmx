@@ -30,7 +30,7 @@ m_FadeTime = 0;
 m_Timer = 0;
 
 //Internal
-m_WasFading = false;
+m_IsInitialized = false;
 m_IsFading = false;
 
 m_Alpha = 0.0;
@@ -58,11 +58,11 @@ m_FadeDirection = -1;
           <argument>
             <kind>1</kind>
             <string>///Initialize
-if (m_IsFading &amp;&amp; !m_WasFading)
+if (m_IsFading &amp;&amp; !m_IsInitialized)
 {
     m_Timer = m_FadeTime * 0.5;
     m_FadeDirection = -1;
-    m_WasFading = true;
+    m_IsInitialized = true;
 }
 </string>
           </argument>
@@ -100,7 +100,7 @@ if (m_Timer &lt;= 0.0)
 if (m_Timer &gt;= (m_FadeTime * 0.5) &amp;&amp; m_FadeDirection == 1)
 {
     m_IsFading = false;
-    m_WasFading = false;
+    m_IsInitialized = false;
     m_FadeDirection = -1;
 }
 </string>
