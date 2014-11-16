@@ -67,6 +67,7 @@ if (remove)
     //Remove the rope that we were attached to
     with (m_RopeInstance)
     {
+        m_RemovedByPickup = true;
         instance_destroy();
     }
     

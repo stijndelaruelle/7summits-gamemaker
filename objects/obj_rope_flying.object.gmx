@@ -93,33 +93,16 @@ var offsetY = m_VertSpeed * global.GameDeltaTime;
 if (place_meeting(x + offsetX, y + offsetY, par_solid) ||
     place_meeting(x + offsetX, y + offsetY, par_solid_projectile))
 {
-    //Check how long our rope can be (50, 100, 150, 200, 250 or 300)
-    var length = 0;
-    var i;
-    for (i = 1; i &lt; 6; ++i)
-    {
-        if (!place_meeting(x, y + (50 * i), par_solid))
-        {
-            length = 50 * i;
-        }  
-        //exit the for loop gracefully
-        else { i = 5; }
-    }
+    //The rope we can climb
+    var spawnY = y;
+    if (m_VertSpeed &lt; 0) spawnY -= 16;
+    var rope = instance_create(x, spawnY, obj_rope);
     
-    //Spawn a rope, and destroy ourselves
-    if (length &gt; 0)
-    {
-        //The rope we can climb
-        var spawnY = y;
-        if (m_VertSpeed &lt; 0) spawnY -= 16;
-        var rope = instance_create(x, spawnY, obj_rope);
-        rope.image_yscale = length;
-        
-        //The rope pickup
-        var rope_pickup = instance_create(x, spawnY - 16, obj_rope_pickup);
-        rope_pickup.m_RopeInstance = rope;
-    }
+    //The rope pickup
+    var rope_pickup = instance_create(x, spawnY - 16, obj_rope_pickup);
+    rope_pickup.m_RopeInstance = rope;
     
+    //Destroy ourselves
     instance_destroy();
 }
 

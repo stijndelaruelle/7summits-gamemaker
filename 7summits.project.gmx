@@ -108,7 +108,6 @@
     <object>objects\obj_rope_flying</object>
     <object>objects\obj_barrel</object>
     <object>objects\obj_door</object>
-    <object>objects\obj_globals</object>
     <objects name="trees">
       <object>objects\obj_Tree_Trunk1</object>
       <object>objects\obj_Tree_Trunk2</object>
@@ -120,7 +119,10 @@
       <object>objects\obj_Tree_Leaves4</object>
     </objects>
     <object>objects\test_background</object>
-    <object>objects\obj_fader</object>
+    <objects name="singletons">
+      <object>objects\obj_globals</object>
+      <object>objects\obj_fader</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_mainMenu</room>
