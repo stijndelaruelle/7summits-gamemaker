@@ -29,7 +29,7 @@
 m_DirectionX = 0;
 m_DirectionY = 0;
 
-m_Speed = 25;
+m_Speed = 35;
 m_HorizSpeed = 0;
 m_VertSpeed = 0;
 
@@ -84,7 +84,7 @@ if (!m_IsInitialized)
           <argument>
             <kind>1</kind>
             <string>///Handle collision &amp; movement
-m_VertSpeed += global.Gravity * 0.4; //lower gravity just feels better
+m_VertSpeed += global.Gravity * 0.6; //lower gravity just feels better
 
 var offsetX = m_HorizSpeed * global.GameDeltaTime;
 var offsetY = m_VertSpeed * global.GameDeltaTime;

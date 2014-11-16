@@ -33,8 +33,8 @@ m_HorizSpeed = 0;
 m_VertSpeed = 0;
 m_HorizCarrySpeed = 0;
 m_VertCarrySpeed = 0;
-m_HorizDirection = 0;
-m_VertDirection = 0;
+m_HorizDirection = -1;
+m_VertDirection = 1;
 
 m_MaxAirJumps = 0;      //No double jumping (at least not at the beginning)
 m_AirJumps = m_MaxAirJumps;
@@ -313,19 +313,10 @@ else if (shootKey &amp;&amp; m_NumRopes &gt; 0)
     var bullet = instance_create(x, y, obj_rope_flying);
 
     //Determine bullet direction
-    if (m_KeyLeft)  bullet.m_DirectionX = -1;
-    if (m_KeyRight) bullet.m_DirectionX = 1;
+    bullet.m_DirectionX = m_HorizDirection * 0.10;
+    bullet.m_DirectionY = -1
     
-    if (m_KeyUp)    bullet.m_DirectionY = -1
-    if (m_KeyDown)  bullet.m_DirectionY = 1;
-    
-    //Detault throw up
-    if (bullet.m_DirectionX == 0 &amp;&amp; bullet.m_DirectionY == 0)
-    {
-        bullet.m_DirectionY = 1
-    }
-    
-    var angle = point_direction(x, y, x + bullet.m_DirectionX, y + bullet.m_DirectionY);
+    var angle = point_direction(x, y, x + m_HorizDirection, y - 1);
     bullet.image_angle = angle;
     
     //we don't use our mouse anymore for shooting
