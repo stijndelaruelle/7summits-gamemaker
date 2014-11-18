@@ -6,6 +6,18 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprites name="temple">
+      <sprite>sprites\spr_Temple1_FloorLeft1</sprite>
+      <sprite>sprites\spr_Temple1_FloorMiddle1</sprite>
+      <sprite>sprites\spr_Temple1_FloorMiddle2</sprite>
+      <sprite>sprites\spr_Temple1_FloorRight1</sprite>
+      <sprite>sprites\spr_Temple1_Pillar1</sprite>
+      <sprite>sprites\spr_Temple1_Pillar2</sprite>
+      <sprite>sprites\spr_Temple1_Pillar3</sprite>
+      <sprite>sprites\spr_Temple1_Pillar4</sprite>
+      <sprite>sprites\spr_Torch_Stone1</sprite>
+      <sprite>sprites\spr_Torch_Stone2</sprite>
+    </sprites>
     <sprites name="trees">
       <sprite>sprites\spr_Climbing_Root1</sprite>
       <sprite>sprites\spr_Tree_Trunk1</sprite>
@@ -50,6 +62,11 @@
     <sprites name="ladders">
       <sprite>sprites\spr_rope</sprite>
       <sprite>sprites\spr_construction</sprite>
+      <sprite>sprites\spr_Ladder_Wood1</sprite>
+      <sprite>sprites\spr_Rope_Short1</sprite>
+      <sprite>sprites\spr_Rope_Short2</sprite>
+      <sprite>sprites\spr_Rope_ShortKnot1</sprite>
+      <sprite>sprites\spr_Rope_SmallKnot2</sprite>
     </sprites>
     <sprites name="triggers">
       <sprite>sprites\spr_spawner</sprite>
@@ -66,6 +83,26 @@
     <sprite>sprites\spr_barrel</sprite>
     <sprite>sprites\spr_door</sprite>
     <sprite>sprites\sprite42</sprite>
+    <sprites name="traps">
+      <sprite>sprites\spr_Spikes_Skull1</sprite>
+      <sprite>sprites\spr_Spikes_Narrow1</sprite>
+      <sprite>sprites\spr_Spikes_Narrow2</sprite>
+      <sprite>sprites\spr_Spikes_Tall1</sprite>
+      <sprite>sprites\spr_Spikes_Wide1</sprite>
+    </sprites>
+    <sprites name="crossings">
+      <sprite>sprites\spr_Bridge_Wood1</sprite>
+      <sprite>sprites\spr_Bridge_Wood2</sprite>
+      <sprite>sprites\spr_Bridge_Wood3</sprite>
+      <sprite>sprites\spr_Rope_LongRing1</sprite>
+      <sprite>sprites\spr_Rope_LongRing2</sprite>
+      <sprite>sprites\spr_Pole_WoodRing1</sprite>
+      <sprite>sprites\spr_Pole_WoodRing2</sprite>
+      <sprite>sprites\spr_Pole_WoodDecoration1</sprite>
+      <sprite>sprites\spr_Pole_WoodRope1</sprite>
+      <sprite>sprites\spr_Pole_WoodRope2</sprite>
+      <sprite>sprites\spr_Pole_WoodRope3</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
