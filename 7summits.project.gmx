@@ -66,7 +66,7 @@
       <sprite>sprites\spr_Rope_Short1</sprite>
       <sprite>sprites\spr_Rope_Short2</sprite>
       <sprite>sprites\spr_Rope_ShortKnot1</sprite>
-      <sprite>sprites\spr_Rope_SmallKnot2</sprite>
+      <sprite>sprites\spr_Rope_ShortKnot2</sprite>
     </sprites>
     <sprites name="triggers">
       <sprite>sprites\spr_spawner</sprite>
@@ -138,12 +138,26 @@
         <object>objects\obj_Stone_Floor2</object>
         <object>objects\obj_Stone_Floor3</object>
         <object>objects\obj_Stone_Floor4</object>
+        <object>objects\obj_Temple1_FloorLeft1</object>
+        <object>objects\obj_Temple1_FloorMiddle1</object>
+        <object>objects\obj_Temple1_FloorMiddle2</object>
+        <object>objects\obj_Temple1_FloorRight1</object>
+        <object>objects\obj_Bridge_Wood1</object>
+        <object>objects\obj_Bridge_Wood2</object>
+        <object>objects\obj_Bridge_Wood3</object>
       </objects>
     </objects>
     <objects name="ladders">
       <object>objects\par_ladder</object>
       <object>objects\obj_rope</object>
       <object>objects\obj_ladder</object>
+      <objects name="visuals">
+        <object>objects\obj_Ladder_Wood1</object>
+        <object>objects\obj_Rope_Short1</object>
+        <object>objects\obj_Rope_Short2</object>
+        <object>objects\obj_Rope_ShortKnot1</object>
+        <object>objects\obj_Rope_ShortKnot2</object>
+      </objects>
     </objects>
     <objects name="pickups">
       <object>objects\par_pickup</object>
@@ -177,6 +191,30 @@
       <object>objects\obj_globals</object>
       <object>objects\obj_fader</object>
       <object>objects\obj_backgrounds</object>
+    </objects>
+    <object>objects\object38</object>
+    <objects name="traps">
+      <object>objects\obj_Spikes_Skull1</object>
+      <object>objects\obj_Spikes_Tall1</object>
+      <object>objects\obj_Spikes_Narrow1</object>
+      <object>objects\obj_Spikes_Narrow2</object>
+      <object>objects\obj_Spikes_Wide1</object>
+    </objects>
+    <objects name="props">
+      <object>objects\obj_Torch_Stone1</object>
+      <object>objects\obj_Torch_Stone2</object>
+      <object>objects\obj_Rope_LongRing1</object>
+      <object>objects\obj_Rope_LongRing2</object>
+      <object>objects\obj_Pole_WoodRing1</object>
+      <object>objects\obj_Pole_WoodRing2</object>
+      <object>objects\obj_Pole_WoodRope1</object>
+      <object>objects\obj_Pole_WoodRope2</object>
+      <object>objects\obj_Pole_WoodRope3</object>
+      <object>objects\obj_Pole_WoodDecoration1</object>
+      <object>objects\obj_Temple1_Pillar1</object>
+      <object>objects\obj_Temple1_Pillar2</object>
+      <object>objects\obj_Temple1_Pillar3</object>
+      <object>objects\obj_Temple1_Pillar4</object>
     </objects>
   </objects>
   <rooms name="rooms">
