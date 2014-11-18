@@ -55,11 +55,11 @@
     <instance objName="obj_wall" x="0" y="800" name="inst_E00BDC1A" locked="0" code="" scaleX="1" scaleY="23" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="992" y="800" name="inst_F611D3B8" locked="0" code="" scaleX="1" scaleY="23" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_projectile" x="755" y="902" name="inst_3DD5356B" locked="0" code="" scaleX="4" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="574" y="1264" name="inst_DB0ECC69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="614" y="1282" name="inst_DB0ECC69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_globals" x="32" y="800" name="inst_174B1C88" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor1" x="192" y="1336" name="inst_A31CD7E2" locked="0" code="depth = -1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stone_Floor2" x="432" y="1344" name="inst_D034EB7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stone_Floor3" x="544" y="1344" name="inst_F33D8827" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor2" x="1529" y="1350" name="inst_B7B588DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor3" x="1271" y="1351" name="inst_F33D8827" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fader" x="48" y="800" name="inst_A98F3531" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor4" x="448" y="1344" name="inst_FA799448" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Tree_Root1" x="696" y="1264" name="inst_80423909" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
@@ -84,13 +84,68 @@
     <instance objName="obj_door" x="112" y="1200" name="inst_1F0AD5D9" locked="0" code="m_LevelName = rm_level1;&#xA;m_Direction = -1;    //Only warp if the player runs in the same direction&#xA;m_AutoWarp = true;  //If false, this is a door (player needs to press a button)&#xA;m_SpawnX = 1120;    //The position the player will spawn at&#xA;m_SpawnY = 544;&#xA;" scaleX="2.5" scaleY="2.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="992" y="1088" name="inst_50C85496" locked="0" code="m_LevelName = rm_level1;&#xA;m_Direction = 1;    //Only warp if the player runs in the same direction&#xA;m_AutoWarp = false; //If false, this is a door (player needs to press a button)&#xA;m_SpawnX = 1000;    //The position the player will spawn at&#xA;m_SpawnY = 100;&#xA;" scaleX="1.5" scaleY="1.5" colour="4294967295" rotation="0"/>
     <instance objName="test_background" x="112" y="48" name="inst_A625EBCD" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stone_Floor1" x="672" y="1344" name="inst_B012294D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor2" x="1162" y="1352" name="inst_011F5406" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor2" x="75" y="1336" name="inst_0EC539C6" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stone_Floor2" x="802" y="1343" name="inst_9E57815D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Temple1_Pillar2" x="1279" y="1363" name="inst_ED65B7B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor3" x="-57" y="1342" name="inst_119FC294" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stone_Floor3" x="895" y="1344" name="inst_E9161B04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor1" x="1395" y="1354" name="inst_18B1133B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Stone_Floor1" x="307" y="1204" name="inst_11C99740" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="313" y="1214" name="inst_8C92C29E" locked="0" code="" scaleX="4.5" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Temple1_FloorRight1" x="1874" y="875" name="inst_22942A45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="0" y="0" name="inst_24A60D97" locked="0" code="" scaleX="0" scaleY="0" colour="0" rotation="0"/>
+    <instance objName="obj_Temple1_FloorMiddle1" x="1667" y="871" name="inst_790520CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Temple1_FloorLeft1" x="1233" y="871" name="inst_FE5E55C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="0" y="0" name="inst_828F9C34" locked="0" code="" scaleX="0" scaleY="0" colour="0" rotation="0"/>
+    <instance objName="obj_Temple1_Pillar1" x="1275" y="925" name="inst_F3924EB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Temple1_Pillar2" x="1934" y="933" name="inst_62423170" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Temple1_Pillar3" x="1268" y="1146" name="inst_4AB557A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Temple1_Pillar4" x="1933" y="1139" name="inst_E06D45B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor3" x="1622" y="1351" name="inst_7580B11F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Temple1_Pillar1" x="1939" y="1368" name="inst_640DD3D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Torch_Stone1" x="1661" y="1118" name="inst_A9F7155E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Bridge_Wood1" x="2338" y="1637" name="inst_CCA13F80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="355"/>
+    <instance objName="obj_Bridge_Wood2" x="2619" y="1660" name="inst_9D5D37DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Bridge_Wood3" x="2899" y="1661" name="inst_8833F073" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="6"/>
+    <instance objName="obj_Pole_WoodDecoration1" x="2312" y="1382" name="inst_2E67FDDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="352"/>
+    <instance objName="obj_Pole_WoodRing1" x="2412" y="1500" name="inst_65D1F6BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="335"/>
+    <instance objName="obj_Pole_WoodRing2" x="3143" y="1485" name="inst_2362EE24" locked="0" code="" scaleX="0.800000011920929" scaleY="0.800000011920929" colour="4294967295" rotation="10"/>
+    <instance objName="obj_Pole_WoodRope1" x="3213" y="1430" name="inst_C8A9F368" locked="0" code="" scaleX="0.800000011920929" scaleY="0.800000011920929" colour="4294967295" rotation="355"/>
+    <instance objName="obj_Rope_LongRing1" x="2681" y="1601" name="inst_0B7796E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Rope_Short1" x="2767" y="1589" name="inst_8D542520" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="10"/>
+    <instance objName="obj_Rope_LongRing2" x="2441" y="1573" name="inst_49201F17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="353"/>
+    <instance objName="obj_Ladder_Wood1" x="1428" y="874" name="inst_EB235AD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Temple1_FloorMiddle2" x="1457" y="871" name="inst_C1CF6556" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Rope_LongRing1" x="2921" y="1600" name="inst_0B075AAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="10"/>
+    <instance objName="obj_Rope_Short1" x="2922" y="1608" name="inst_53998D67" locked="0" code="" scaleX="1.20000004768372" scaleY="1.20000004768372" colour="4294967295" rotation="5"/>
+    <instance objName="obj_Rope_Short2" x="2441" y="1589" name="inst_92DB432C" locked="0" code="" scaleX="0.800000011920929" scaleY="0.800000011920929" colour="4294967295" rotation="350"/>
+    <instance objName="obj_Rope_LongRing1" x="2376" y="1509" name="inst_BF2DC2C0" locked="0" code="" scaleX="0.899999976158142" scaleY="0.899999976158142" colour="4294967295" rotation="345"/>
+    <instance objName="obj_Rope_LongRing1" x="3225" y="1543" name="inst_B3E4A85A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="190"/>
+    <instance objName="obj_Rope_Short2" x="2676" y="1619" name="inst_A331FF64" locked="0" code="" scaleX="0.800000011920929" scaleY="0.800000011920929" colour="4294967295" rotation="350"/>
+    <instance objName="obj_Rope_Short2" x="2763" y="1585" name="inst_3E6C5BAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="265"/>
+    <instance objName="obj_Rope_LongRing1" x="2976" y="1564" name="inst_BECD3BAE" locked="0" code="" scaleX="0.850000023841858" scaleY="-0.850000023841858" colour="4294967295" rotation="185"/>
+    <instance objName="obj_Rope_Short1" x="2963" y="1581" name="inst_40FF7132" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="5"/>
+    <instance objName="obj_Rope_Short1" x="2585" y="1571" name="inst_44D8EBB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="354"/>
+    <instance objName="obj_Tree_Leaves10" x="2114" y="1083" name="inst_8974C3F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="350"/>
+    <instance objName="obj_Tree_Leaves1" x="2138" y="846" name="inst_294DFE2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Tree_Leaves9" x="2068" y="526" name="inst_3A2CB3AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor2" x="802" y="1343" name="inst_398AB04B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor3" x="895" y="1344" name="inst_077B471C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor1" x="672" y="1344" name="inst_DDAD5B30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor3" x="544" y="1344" name="inst_0C55B79B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor2" x="432" y="1344" name="inst_FD519932" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor4" x="2086" y="1618" name="inst_2CF00D3A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="350"/>
+    <instance objName="obj_Stone_Floor3" x="2180" y="1636" name="inst_670C4B22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="355"/>
+    <instance objName="obj_Stone_Floor2" x="1967" y="1591" name="inst_F4695847" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="350"/>
+    <instance objName="obj_player" x="1626" y="1261" name="inst_B04985B7" locked="0" code="" scaleX="1.75" scaleY="1.75" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Stone_Floor1" x="1830" y="1564" name="inst_1D70ED4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="350"/>
+    <instance objName="obj_Stone_Floor2" x="1691" y="1367" name="inst_A1875AE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spikes_Skull1" x="2593" y="1820" name="inst_4209547E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spikes_Tall1" x="2871" y="1864" name="inst_A007D917" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spikes_Narrow1" x="2722" y="1912" name="inst_65AD3AFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spikes_Wide1" x="2314" y="1897" name="inst_9EE1E7F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spikes_Narrow2" x="2533" y="1973" name="inst_F8EA9775" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Spikes_Wide1" x="3268" y="1905" name="inst_7BC22FBD" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="0" y="0" name="inst_3722F1FF" locked="0" code="" scaleX="0" scaleY="0" colour="0" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

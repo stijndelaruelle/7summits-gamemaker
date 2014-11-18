@@ -185,6 +185,12 @@
       <object>objects\obj_Tree_Leaves2</object>
       <object>objects\obj_Tree_Leaves3</object>
       <object>objects\obj_Tree_Leaves4</object>
+      <object>objects\obj_Tree_Leaves5</object>
+      <object>objects\obj_Tree_Leaves6</object>
+      <object>objects\obj_Tree_Leaves7</object>
+      <object>objects\obj_Tree_Leaves8</object>
+      <object>objects\obj_Tree_Leaves9</object>
+      <object>objects\obj_Tree_Leaves10</object>
     </objects>
     <object>objects\test_background</object>
     <objects name="singletons">
