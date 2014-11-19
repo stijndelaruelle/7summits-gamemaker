@@ -18,7 +18,7 @@
       <sprite>sprites\spr_Torch_Stone1</sprite>
       <sprite>sprites\spr_Torch_Stone2</sprite>
     </sprites>
-    <sprites name="trees">
+    <sprites name="plants">
       <sprite>sprites\spr_Climbing_Root1</sprite>
       <sprite>sprites\spr_Tree_Trunk1</sprite>
       <sprite>sprites\spr_Tree_Trunk2</sprite>
@@ -35,6 +35,13 @@
       <sprite>sprites\spr_Tree_Root1</sprite>
       <sprite>sprites\spr_Tree_Root2</sprite>
       <sprite>sprites\spr_Tree_Root3</sprite>
+      <sprite>sprites\spr_Grass_Small1</sprite>
+      <sprite>sprites\spr_Grass_Small2</sprite>
+      <sprite>sprites\spr_Grass_Wide1</sprite>
+      <sprite>sprites\spr_Grass_Wide2</sprite>
+      <sprite>sprites\spr_Grass_Flower1</sprite>
+      <sprite>sprites\spr_Grass_Flower2</sprite>
+      <sprite>sprites\spr_Grass_Flower3</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\spr_player_idle</sprite>
@@ -176,7 +183,7 @@
     <object>objects\obj_rope_flying</object>
     <object>objects\obj_barrel</object>
     <object>objects\obj_door</object>
-    <objects name="trees">
+    <objects name="plants">
       <object>objects\obj_Tree_Trunk1</object>
       <object>objects\obj_Tree_Trunk2</object>
       <object>objects\obj_Tree_Root1</object>
@@ -191,6 +198,13 @@
       <object>objects\obj_Tree_Leaves8</object>
       <object>objects\obj_Tree_Leaves9</object>
       <object>objects\obj_Tree_Leaves10</object>
+      <object>objects\obj_Grass_Small1</object>
+      <object>objects\obj_Grass_Small2</object>
+      <object>objects\obj_Grass_Flower1</object>
+      <object>objects\obj_Grass_Flower2</object>
+      <object>objects\obj_Grass_Flower3</object>
+      <object>objects\obj_Grass_Wide1</object>
+      <object>objects\obj_Grass_Wide2</object>
     </objects>
     <object>objects\test_background</object>
     <objects name="singletons">
