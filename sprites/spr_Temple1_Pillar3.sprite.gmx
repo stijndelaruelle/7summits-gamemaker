@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>132</width>
-  <height>245</height>
+  <width>66</width>
+  <height>123</height>
   <frames>
     <frame index="0">images\spr_Temple1_Pillar3_0.png</frame>
   </frames>

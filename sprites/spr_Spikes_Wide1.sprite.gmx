@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>310</width>
-  <height>198</height>
+  <width>155</width>
+  <height>100</height>
   <frames>
     <frame index="0">images\spr_Spikes_Wide1_0.png</frame>
   </frames>

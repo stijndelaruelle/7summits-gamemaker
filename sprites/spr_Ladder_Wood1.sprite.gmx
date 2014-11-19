@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>117</width>
-  <height>490</height>
+  <width>59</width>
+  <height>246</height>
   <frames>
     <frame index="0">images\spr_Ladder_Wood1_0.png</frame>
   </frames>

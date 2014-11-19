@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>296</width>
-  <height>112</height>
+  <width>149</width>
+  <height>57</height>
   <frames>
     <frame index="0">images\spr_Bridge_Wood2_0.png</frame>
   </frames>

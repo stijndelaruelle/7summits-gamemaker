@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>17</width>
-  <height>174</height>
+  <width>9</width>
+  <height>87</height>
   <frames>
     <frame index="0">images\spr_Rope_Short2_0.png</frame>
   </frames>

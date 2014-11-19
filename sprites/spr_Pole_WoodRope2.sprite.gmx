@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>61</width>
-  <height>357</height>
+  <width>31</width>
+  <height>179</height>
   <frames>
     <frame index="0">images\spr_Pole_WoodRope2_0.png</frame>
   </frames>
