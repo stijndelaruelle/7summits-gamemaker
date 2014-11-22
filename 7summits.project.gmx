@@ -212,7 +212,6 @@
       <object>objects\obj_fader</object>
       <object>objects\obj_backgrounds</object>
     </objects>
-    <object>objects\object38</object>
     <objects name="traps">
       <object>objects\obj_Spikes_Skull1</object>
       <object>objects\obj_Spikes_Tall1</object>
