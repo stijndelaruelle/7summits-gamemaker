@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>246</width>
-  <height>746</height>
+  <width>124</width>
+  <height>374</height>
   <frames>
     <frame index="0">images\spr_Tree_Trunk2_0.png</frame>
   </frames>

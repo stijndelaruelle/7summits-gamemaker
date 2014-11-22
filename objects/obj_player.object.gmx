@@ -28,7 +28,7 @@
             <string>///Initialize variables
 m_Speed = 10;
 m_JumpSpeed = 2;
-m_MaxJumpSpeed = 15;
+m_MaxJumpSpeed = 10;
 m_HorizSpeed = 0;
 m_VertSpeed = 0;
 m_HorizCarrySpeed = 0;
@@ -196,22 +196,30 @@ if (onGround || m_IsOnLadder)
 //We're in the air
 else
 {
-    m_VertSpeed += m_VertDirection * global.Gravity;
+    m_VertSpeed += m_VertDirection * (global.Gravity * global.GameDeltaTime);
     
     //Jump height
     if (keyJumpReleased || m_VertDirection &gt; 0) { m_IsJumping = false; }
     
     if (m_IsJumping)
     {
-        var newVertSpeed = m_VertSpeed + (m_MaxJumpSpeed - m_VertSpeed) * 0.75;
-        if ((m_VertSpeed + global.Gravity) == newVertSpeed)
+        m_VertSpeed += 6.0 * global.GameDeltaTime;
+        
+        if (m_VertSpeed &gt;= m_MaxJumpSpeed)
         {
             m_IsJumping = false;
+            m_VertSpeed = m_MaxJumpSpeed;
         }
-        else
-        {
-            m_VertSpeed = newVertSpeed;
-        }
+        
+        //var newVertSpeed = m_VertSpeed + (m_MaxJumpSpeed - m_VertSpeed) * 0.75;
+        //if ((m_VertSpeed + global.Gravity) &gt;= newVertSpeed)
+        //{
+         //   m_IsJumping = false;
+        //}
+        //else
+        //{
+        //    m_VertSpeed = newVertSpeed;
+        //}
     }
 
     //Airjumps
@@ -248,31 +256,6 @@ if (m_KeyRight)
     m_HorizDirection = 1;
 }
 
-    
-//Ducking
-if (onGround)
-{
-    if (m_KeyDown)
-    {
-        m_IsDucking = true;
-    }
-}
-
-if ((m_IsDucking &amp;&amp; !m_KeyDown) || !onGround)
-{
-    //Check if we can stand there
-    mask_index = spr_player_mask;
-    if (!place_meeting(x, y, par_solid))
-    {
-        m_IsDucking = false;
-    }
-    else
-    {
-        mask_index = spr_player_mask_crouch;
-    }
-}
-    
-
 //Ladder
 if (!m_IsOnLadder)
 {
@@ -299,6 +282,29 @@ if (m_IsOnLadder)
     }
     
     if (!place_meeting(x,y,par_ladder)) m_IsOnLadder = false;    
+}
+
+//Ducking
+if (onGround &amp;&amp; !m_IsOnLadder)
+{
+    if (m_KeyDown)
+    {
+        m_IsDucking = true;
+    }
+}
+
+if ((m_IsDucking &amp;&amp; !m_KeyDown) || !onGround)
+{
+    //Check if we can stand there
+    mask_index = spr_player_mask;
+    if (!place_meeting(x, y, par_solid))
+    {
+        m_IsDucking = false;
+    }
+    else
+    {
+        mask_index = spr_player_mask_crouch;
+    }
 }
 
 //Not moving
@@ -645,6 +651,7 @@ for (var i = 0; i &lt; numHearts; ++i)
             <kind>1</kind>
             <string>///Draw score, height &amp; num ropes
 draw_set_color(c_red);
+draw_set_font(font_default);
 draw_text(16, 63, "Punten: " + string(m_Score));
 draw_text(16, 80, "Hoogte: " + string(m_TravelledHeight + m_CurrentHeight) + " meter");
 draw_text(16, 97, "Touwen: " + string(m_NumRopes));

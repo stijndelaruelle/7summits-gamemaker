@@ -128,6 +128,11 @@
     </scripts>
     <script>scripts\echo.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_default</font>
+    <font>fonts\font1</font>
+    <font>fonts\font2</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <objects name="walls">

@@ -85,13 +85,13 @@
     <option_hasloadimage>false</option_hasloadimage>
     <option_helpkey>true</option_helpkey>
     <option_html5_CreationEventOrder>true</option_html5_CreationEventOrder>
-    <option_html5_WebGL>0</option_html5_WebGL>
+    <option_html5_WebGL>2</option_html5_WebGL>
     <option_html5_advertising_enable>0</option_html5_advertising_enable>
     <option_html5_advertising_key></option_html5_advertising_key>
     <option_html5_advertising_type>Supersonic Ads</option_html5_advertising_type>
     <option_html5_allow_fullscreen>True</option_html5_allow_fullscreen>
     <option_html5_alwaysreload>False</option_html5_alwaysreload>
-    <option_html5_centergame>False</option_html5_centergame>
+    <option_html5_centergame>True</option_html5_centergame>
     <option_html5_flurry_enable>0</option_html5_flurry_enable>
     <option_html5_flurry_id></option_html5_flurry_id>
     <option_html5_foldername>html5game</option_html5_foldername>
@@ -103,7 +103,7 @@
     <option_html5_interpolate>-1</option_html5_interpolate>
     <option_html5_jsprepend></option_html5_jsprepend>
     <option_html5_loadingbar>-1</option_html5_loadingbar>
-    <option_html5_outputdebugtoconsole>False</option_html5_outputdebugtoconsole>
+    <option_html5_outputdebugtoconsole>True</option_html5_outputdebugtoconsole>
     <option_html5_outputname>index.html</option_html5_outputname>
     <option_html5_scale>-1</option_html5_scale>
     <option_html5_showcursor>True</option_html5_showcursor>
@@ -263,8 +263,20 @@
     <option_textureGroup0_parent>&lt;none&gt;</option_textureGroup0_parent>
     <option_textureGroup0_scaled>0</option_textureGroup0_scaled>
     <option_textureGroup0_targets>9223372036854775807</option_textureGroup0_targets>
-    <option_textureGroup_count>1</option_textureGroup_count>
+    <option_textureGroup1_border>2</option_textureGroup1_border>
+    <option_textureGroup1_nocropping>0</option_textureGroup1_nocropping>
+    <option_textureGroup1_parent>&lt;none&gt;</option_textureGroup1_parent>
+    <option_textureGroup1_scaled>0</option_textureGroup1_scaled>
+    <option_textureGroup1_targets>9223372036854775807</option_textureGroup1_targets>
+    <option_textureGroup2_border>2</option_textureGroup2_border>
+    <option_textureGroup2_nocropping>0</option_textureGroup2_nocropping>
+    <option_textureGroup2_parent>&lt;none&gt;</option_textureGroup2_parent>
+    <option_textureGroup2_scaled>0</option_textureGroup2_scaled>
+    <option_textureGroup2_targets>9223372036854775807</option_textureGroup2_targets>
+    <option_textureGroup_count>3</option_textureGroup_count>
     <option_textureGroups0>Default</option_textureGroups0>
+    <option_textureGroups1>TestPage</option_textureGroups1>
+    <option_textureGroups2>EditorSprites</option_textureGroups2>
     <option_tizen_app_id>http://yourdomain/Project1</option_tizen_app_id>
     <option_tizen_build_version>0</option_tizen_build_version>
     <option_tizen_display_name>Project1</option_tizen_display_name>

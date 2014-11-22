@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>236</width>
-  <height>307</height>
+  <width>119</width>
+  <height>154</height>
   <frames>
     <frame index="0">images\spr_Tree_Leaves2_0.png</frame>
   </frames>
