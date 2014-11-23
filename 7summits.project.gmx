@@ -134,7 +134,6 @@
     <font>fonts\font2</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_player</object>
     <objects name="walls">
       <objects name="parents">
         <object>objects\par_solid</object>
@@ -182,12 +181,6 @@
       <object>objects\obj_destroyer</object>
       <object>objects\obj_checkpoint</object>
     </objects>
-    <objects name="tutorial">
-      <object>objects\obj_tut_jump</object>
-    </objects>
-    <object>objects\obj_rope_flying</object>
-    <object>objects\obj_barrel</object>
-    <object>objects\obj_door</object>
     <objects name="plants">
       <object>objects\obj_Tree_Trunk1</object>
       <object>objects\obj_Tree_Trunk2</object>
@@ -210,12 +203,6 @@
       <object>objects\obj_Grass_Flower3</object>
       <object>objects\obj_Grass_Wide1</object>
       <object>objects\obj_Grass_Wide2</object>
-    </objects>
-    <object>objects\test_background</object>
-    <objects name="singletons">
-      <object>objects\obj_globals</object>
-      <object>objects\obj_fader</object>
-      <object>objects\obj_backgrounds</object>
     </objects>
     <objects name="traps">
       <object>objects\obj_Spikes_Skull1</object>
@@ -240,6 +227,20 @@
       <object>objects\obj_Temple1_Pillar3</object>
       <object>objects\obj_Temple1_Pillar4</object>
     </objects>
+    <objects name="singletons">
+      <object>objects\obj_globals</object>
+      <object>objects\obj_fader</object>
+      <object>objects\obj_camera</object>
+      <object>objects\obj_backgrounds</object>
+    </objects>
+    <objects name="tutorial">
+      <object>objects\obj_tut_jump</object>
+    </objects>
+    <object>objects\obj_player</object>
+    <object>objects\obj_rope_flying</object>
+    <object>objects\test_background</object>
+    <object>objects\obj_door</object>
+    <object>objects\obj_barrel</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_mainMenu</room>

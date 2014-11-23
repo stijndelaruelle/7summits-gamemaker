@@ -660,6 +660,39 @@ draw_text(16, 97, "Touwen: " + string(m_NumRopes));
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="113">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Test panning
+if (!obj_camera.m_IsInitialized)
+{
+    obj_camera.m_TargetX = view_xview[0] + 200;
+    obj_camera.m_TargetY = view_yview[0];
+    
+    obj_camera.m_PanTime = 0.5;
+    obj_camera.m_WaitTime = -1;
+    obj_camera.m_FollowPlayer = false;
+    obj_camera.m_IsPanning = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="82">
       <action>
         <libid>1</libid>
