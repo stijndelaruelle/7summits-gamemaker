@@ -85,6 +85,7 @@
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\spr_hud_hearts</sprite>
+      <sprite>sprites\spr_hud_panbutton</sprite>
     </sprites>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_barrel</sprite>
@@ -226,6 +227,9 @@
       <object>objects\obj_Temple1_Pillar2</object>
       <object>objects\obj_Temple1_Pillar3</object>
       <object>objects\obj_Temple1_Pillar4</object>
+    </objects>
+    <objects name="HUD">
+      <object>objects\obj_hud_panbutton</object>
     </objects>
     <objects name="singletons">
       <object>objects\obj_globals</object>

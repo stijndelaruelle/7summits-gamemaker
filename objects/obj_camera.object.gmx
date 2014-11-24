@@ -30,7 +30,7 @@ m_PanTime = 0;
 m_WaitTime = 0; //The amount of time we stay at the target position, -1 = stay here forever
 m_Timer = 0;
 
-m_FollowPlayer = true;
+m_FollowPlayer = false;
 m_FollowOffsetX = 0;
 m_FollowOffsetY = 0;
 m_StartX = 0;
@@ -72,7 +72,7 @@ if (m_IsPanning &amp;&amp; !m_IsInitialized)
     
     m_StartX = view_xview[0];
     m_StartY = view_yview[0];
-
+        
     m_IsInitialized = true;
 }
 </string>
@@ -140,6 +140,7 @@ if (m_Timer &lt;= 0.0)
             m_IsPanning = false;
             m_IsReturning = false;
             m_IsWaiting = false;
+
             m_IsInitialized = false;
         }
         else
@@ -173,6 +174,7 @@ if (m_Timer &lt;= 0.0)
         m_IsPanning = false;
         m_IsReturning = false;
         m_IsWaiting = false;
+
         m_IsInitialized = false;
     }
 }
