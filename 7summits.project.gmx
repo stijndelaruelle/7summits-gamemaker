@@ -52,16 +52,32 @@
       <sprite>sprites\spr_dude_scaleref</sprite>
       <sprite>sprites\spr_dude_scaleref_crouch</sprite>
     </sprites>
+    <sprites name="floors">
+      <sprite>sprites\spr_Stone_Floor1</sprite>
+      <sprite>sprites\spr_Stone_Floor2</sprite>
+      <sprite>sprites\spr_Stone_Floor3</sprite>
+      <sprite>sprites\spr_Stone_Floor4</sprite>
+      <sprite>sprites\spr_RockGrass_Floor_Tall1</sprite>
+      <sprite>sprites\spr_RockGrass_Floor_Wide1</sprite>
+      <sprite>sprites\spr_RockGrass_Floor_Wide2</sprite>
+      <sprite>sprites\spr_RockGrass_Floor_Wide3</sprite>
+      <sprite>sprites\spr_RockGrass_Floor1</sprite>
+      <sprite>sprites\spr_RockGrass_Floor2</sprite>
+      <sprite>sprites\spr_RockGrass_Floor3</sprite>
+    </sprites>
     <sprites name="walls">
       <sprite>sprites\spr_solid</sprite>
       <sprite>sprites\spr_solid_projectile</sprite>
       <sprite>sprites\spr_platform</sprite>
       <sprite>sprites\spr_platform_moving</sprite>
       <sprite>sprites\spr_platform_falling</sprite>
-      <sprite>sprites\spr_Stone_Floor1</sprite>
-      <sprite>sprites\spr_Stone_Floor2</sprite>
-      <sprite>sprites\spr_Stone_Floor3</sprite>
-      <sprite>sprites\spr_Stone_Floor4</sprite>
+      <sprite>sprites\spr_Rock_Mountain1</sprite>
+      <sprite>sprites\spr_Rock_Mountain2</sprite>
+      <sprite>sprites\spr_Rock_Mountain3</sprite>
+      <sprite>sprites\spr_Rock_Mountain4</sprite>
+      <sprite>sprites\spr_Rock_Mountain5</sprite>
+      <sprite>sprites\spr_Rock_Mountain_Small1</sprite>
+      <sprite>sprites\spr_Rock_Mountain_Small2</sprite>
     </sprites>
     <sprites name="pickups">
       <sprite>sprites\spr_coin</sprite>
@@ -145,11 +161,18 @@
       <object>objects\obj_platform</object>
       <object>objects\obj_platform_moving</object>
       <object>objects\obj_wall_falling</object>
-      <objects name="visuals">
+      <objects name="floor visuals">
         <object>objects\obj_Stone_Floor1</object>
         <object>objects\obj_Stone_Floor2</object>
         <object>objects\obj_Stone_Floor3</object>
         <object>objects\obj_Stone_Floor4</object>
+        <object>objects\obj_RockGrass_Floor1</object>
+        <object>objects\obj_RockGrass_Floor2</object>
+        <object>objects\obj_RockGrass_Floor3</object>
+        <object>objects\Obj_RockGrass_Floor_Tall1</object>
+        <object>objects\obj_RockGrass_Floor_Wide1</object>
+        <object>objects\obj_RockGrass_Floor_Wide2</object>
+        <object>objects\obj_RockGrass_Floor_Wide3</object>
         <object>objects\obj_Temple1_FloorLeft1</object>
         <object>objects\obj_Temple1_FloorMiddle1</object>
         <object>objects\obj_Temple1_FloorMiddle2</object>
@@ -157,6 +180,15 @@
         <object>objects\obj_Bridge_Wood1</object>
         <object>objects\obj_Bridge_Wood2</object>
         <object>objects\obj_Bridge_Wood3</object>
+      </objects>
+      <objects name="wall visuals">
+        <object>objects\obj_Rock_Mountain1</object>
+        <object>objects\obj_Rock_Mountain2</object>
+        <object>objects\obj_Rock_Mountain3</object>
+        <object>objects\obj_Rock_Mountain4</object>
+        <object>objects\obj_Rock_Mountain5</object>
+        <object>objects\obj_Rock_Mountain_Small1</object>
+        <object>objects\obj_Rock_Mountain_Small2</object>
       </objects>
     </objects>
     <objects name="ladders">
