@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>183</width>
-  <height>72</height>
+  <height>73</height>
   <frames>
     <frame index="0">images\spr_RockGrass_Floor_Wide2_0.png</frame>
   </frames>

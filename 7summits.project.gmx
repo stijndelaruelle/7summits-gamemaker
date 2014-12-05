@@ -42,6 +42,10 @@
       <sprite>sprites\spr_Grass_Flower1</sprite>
       <sprite>sprites\spr_Grass_Flower2</sprite>
       <sprite>sprites\spr_Grass_Flower3</sprite>
+      <sprite>sprites\spr_Mushroom1</sprite>
+      <sprite>sprites\spr_Mushroom2</sprite>
+      <sprite>sprites\spr_Mushroom3</sprite>
+      <sprite>sprites\spr_Mushroom4</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\spr_player_idle</sprite>
@@ -78,6 +82,14 @@
       <sprite>sprites\spr_Rock_Mountain5</sprite>
       <sprite>sprites\spr_Rock_Mountain_Small1</sprite>
       <sprite>sprites\spr_Rock_Mountain_Small2</sprite>
+      <sprite>sprites\spr_Boulder1</sprite>
+      <sprite>sprites\spr_Boulder2</sprite>
+      <sprite>sprites\spr_Boulder3</sprite>
+      <sprite>sprites\spr_Boulder4</sprite>
+      <sprite>sprites\spr_Boulder5</sprite>
+      <sprite>sprites\spr_Boulder6</sprite>
+      <sprite>sprites\spr_Boulder7</sprite>
+      <sprite>sprites\spr_Boulder8</sprite>
     </sprites>
     <sprites name="pickups">
       <sprite>sprites\spr_coin</sprite>
@@ -126,6 +138,13 @@
       <sprite>sprites\spr_Pole_WoodRope1</sprite>
       <sprite>sprites\spr_Pole_WoodRope2</sprite>
       <sprite>sprites\spr_Pole_WoodRope3</sprite>
+    </sprites>
+    <sprites name="decorations">
+      <sprite>sprites\spr_Totem1</sprite>
+      <sprite>sprites\spr_Totem2</sprite>
+      <sprite>sprites\spr_TotemFace1</sprite>
+      <sprite>sprites\spr_TotemFace2</sprite>
+      <sprite>sprites\spr_Cave_Entrance1</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -189,6 +208,14 @@
         <object>objects\obj_Rock_Mountain5</object>
         <object>objects\obj_Rock_Mountain_Small1</object>
         <object>objects\obj_Rock_Mountain_Small2</object>
+        <object>objects\obj_Boulder1</object>
+        <object>objects\obj_Boulder2</object>
+        <object>objects\obj_Boulder3</object>
+        <object>objects\obj_Boulder4</object>
+        <object>objects\obj_Boulder5</object>
+        <object>objects\obj_Boulder6</object>
+        <object>objects\obj_Boulder7</object>
+        <object>objects\obj_Boulder8</object>
       </objects>
     </objects>
     <objects name="ladders">
@@ -229,8 +256,12 @@
       <object>objects\obj_Tree_Leaves8</object>
       <object>objects\obj_Tree_Leaves9</object>
       <object>objects\obj_Tree_Leaves10</object>
-      <object>objects\obj_Grass_Small1</object>
+      <object>objects\obj_Mushroom1</object>
+      <object>objects\obj_Mushroom2</object>
+      <object>objects\obj_Mushroom3</object>
+      <object>objects\obj_Mushroom4</object>
       <object>objects\obj_Grass_Small2</object>
+      <object>objects\obj_Grass_Small1</object>
       <object>objects\obj_Grass_Flower1</object>
       <object>objects\obj_Grass_Flower2</object>
       <object>objects\obj_Grass_Flower3</object>
@@ -277,6 +308,13 @@
     <object>objects\test_background</object>
     <object>objects\obj_door</object>
     <object>objects\obj_barrel</object>
+    <objects name="decorations">
+      <object>objects\obj_Totem1</object>
+      <object>objects\obj_Cave_Entrance1</object>
+      <object>objects\obj_TotemFace2</object>
+      <object>objects\obj_TotemFace1</object>
+      <object>objects\obj_Totem2</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_mainMenu</room>

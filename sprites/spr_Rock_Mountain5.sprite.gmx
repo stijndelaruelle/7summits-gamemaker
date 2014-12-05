@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>229</width>
-  <height>384</height>
+  <height>385</height>
   <frames>
     <frame index="0">images\spr_Rock_Mountain5_0.png</frame>
   </frames>
